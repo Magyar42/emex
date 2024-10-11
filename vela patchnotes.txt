@@ -1,0 +1,21 @@
+EMEX - 3.13 CompPatch [1.6.7]
+
+Updated all instances of has_authority = auth_hive_mind to is_hive_empire scripted trigger
+Updated all instances of has_authority = auth_corporate to is_megacorp scripted trigger
+Updated all instances of has_authority = auth_machine_intelligence to is_machine_empire scripted trigger
+Updated all instances of has_authority = auth_oligarchic to is_oligarchic_authority scripted trigger
+Added restriction to some buildings preventing their construction on penal colonies
+Updated miners, farmers and technicians economic_categories
+Updated can_fill_ruler_job and can_release_vassal_from_species game_rules
+Relics now use the @activation_cost variable to set unity cost of activation
+Temporarily removed Seeded Evolution and Plague-Ridden origins; existing games with them will continue to work
+NOTE: This is due to both origins getting complete overhauls in the EMEX 2.0 update due to their lackluster content
+Research Districts on Core Processor Worlds now give 4 Researcher jobs instead of 2
+Machinarchy can no longer be picked alongside Under One Rule
+Core Processor worlds can now not be colonised by non-machines at all
+Added species_can_live_on_planet game_rule to overwrites
+Born of Knowledge origin now sets Core Processor habitability to 100% for empire species
+Bio-Mechanical worlds now have a base habitability floor (minimum) of 75%
+Updated Environmental Symbiosis/Caretakers to include the new Planetary Diversity gaia worlds (pd_is_planet_class_gaia)
+Rooted species trait now costs -1 trait points instead of -2
+Fixed issue where event to build the Masters of Architecture deposit would fire after every government reform while the civic was active
