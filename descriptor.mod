@@ -1,7 +1,10 @@
-version="2.0"
+version="1.6.7"
 tags={
+	"Buildings"
+	"Events"
 	"Gameplay"
+	"Technologies"
 }
-name="EMEX Beta"
-supported_version="3.13.*"
+name="[3.13] Empires Expanded"
+supported_version="v3.13.*"
 remote_file_id="2778496088"
