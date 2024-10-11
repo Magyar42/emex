@@ -1,0 +1,443 @@
+
+civic_emex_radical_militarist = {
+	cost = 2
+	pickable_at_start = no
+	icon = "gfx/interface/icons/governments/civics/radical/civic_emex_radical_militarist.dds"
+	description = "civic_tooltip_civic_emex_radical_militarist_effects"
+	potential = {
+	}
+	possible = {
+		civics = {
+			NOR = {
+				text = emex_tooltip_radical_exclusive
+				value = civic_emex_radical_pacifist
+				value = civic_emex_radical_spiritualist
+				value = civic_emex_radical_materialist
+				value = civic_emex_radical_egalitarian
+				value = civic_emex_radical_authoritarian
+				value = civic_emex_radical_xenophile
+				value = civic_emex_radical_xenophobe
+				value = civic_emex_radical_corporate
+			}
+		}
+		ethics = {
+			OR = {
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+			}
+		}
+	}
+	random_weight = { base = 0 }
+	ai_weight = {
+		base = 5
+	}
+	modifier = {
+	}
+	modification = {
+		moddable_conditions_custom_tooltip = CIVIC_NOT_MODDABLE_ONLY_REMOVE
+		add = {
+			has_ascension_perk = ap_emex_advanced_sovereignty
+		}
+		remove = {
+			custom_tooltip = {
+				fail_text = CIVIC_LOCKED
+				NOT = { has_country_flag = emex_radical_reformation_blocked }
+			}
+		}
+	}
+}
+
+civic_emex_radical_pacifist = {
+	cost = 2
+	pickable_at_start = no
+	icon = "gfx/interface/icons/governments/civics/radical/civic_emex_radical_pacifist.dds"
+	description = "civic_tooltip_civic_emex_radical_pacifist_effects"
+	potential = {
+		has_country_flag = emex_radical_civics_available
+		NOT = { has_global_flag = emex_radical_civics_enabled }
+	}
+	possible = {
+		civics = {
+			NOR = {
+				text = emex_tooltip_radical_exclusive
+				value = civic_emex_radical_militarist
+				value = civic_emex_radical_spiritualist
+				value = civic_emex_radical_materialist
+				value = civic_emex_radical_egalitarian
+				value = civic_emex_radical_authoritarian
+				value = civic_emex_radical_xenophile
+				value = civic_emex_radical_xenophobe
+				value = civic_emex_radical_corporate
+			}
+		}
+		ethics = {
+			OR = {
+				value = ethic_pacifist
+				value = ethic_fanatic_pacifist
+			}
+		}
+	}
+	random_weight = { base = 0 }
+	ai_weight = {
+		base = 5
+	}
+	modifier = {
+	}
+	modification = {
+		moddable_conditions_custom_tooltip = CIVIC_NOT_MODDABLE_ONLY_REMOVE
+		add = {
+			has_ascension_perk = ap_emex_advanced_sovereignty
+		}
+		remove = {
+			custom_tooltip = {
+				fail_text = CIVIC_LOCKED
+				NOT = { has_country_flag = emex_radical_reformation_blocked }
+			}
+		}
+	}
+}
+
+civic_emex_radical_spiritualist = {
+	cost = 2
+	pickable_at_start = no
+	icon = "gfx/interface/icons/governments/civics/radical/civic_emex_radical_spiritualist.dds"
+	description = "civic_tooltip_civic_emex_radical_spiritualist_effects"
+	potential = {
+		has_country_flag = emex_radical_civics_available
+		NOT = { has_global_flag = emex_radical_civics_enabled }
+	}
+	possible = {
+		civics = {
+			NOR = {
+				text = emex_tooltip_radical_exclusive
+				value = civic_emex_radical_pacifist
+				value = civic_emex_radical_militarist
+				value = civic_emex_radical_materialist
+				value = civic_emex_radical_egalitarian
+				value = civic_emex_radical_authoritarian
+				value = civic_emex_radical_xenophile
+				value = civic_emex_radical_xenophobe
+				value = civic_emex_radical_corporate
+			}
+		}
+		ethics = {
+			OR = {
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+		}
+	}
+	random_weight = { base = 0 }
+	ai_weight = {
+		base = 5
+	}
+	modifier = {
+	}
+	modification = {
+		moddable_conditions_custom_tooltip = CIVIC_NOT_MODDABLE_ONLY_REMOVE
+		add = {
+			has_ascension_perk = ap_emex_advanced_sovereignty
+		}
+		remove = {
+			custom_tooltip = {
+				fail_text = CIVIC_LOCKED
+				NOT = { has_country_flag = emex_radical_reformation_blocked }
+			}
+		}
+	}
+}
+
+civic_emex_radical_materialist = {
+	cost = 2
+	pickable_at_start = no
+	icon = "gfx/interface/icons/governments/civics/radical/civic_emex_radical_materialist.dds"
+	description = "civic_tooltip_civic_emex_radical_materialist_effects"
+	potential = {
+		has_country_flag = emex_radical_civics_available
+		NOT = { has_global_flag = emex_radical_civics_enabled }
+	}
+	possible = {
+		civics = {
+			NOR = {
+				text = emex_tooltip_radical_exclusive
+				value = civic_emex_radical_pacifist
+				value = civic_emex_radical_spiritualist
+				value = civic_emex_radical_militarist
+				value = civic_emex_radical_egalitarian
+				value = civic_emex_radical_authoritarian
+				value = civic_emex_radical_xenophile
+				value = civic_emex_radical_xenophobe
+				value = civic_emex_radical_corporate
+			}
+		}
+		ethics = {
+			OR = {
+				value = ethic_materialist
+				value = ethic_fanatic_materialist
+			}
+		}
+	}
+	random_weight = { base = 0 }
+	ai_weight = {
+		base = 5
+	}
+	modifier = {
+	}
+	modification = {
+		moddable_conditions_custom_tooltip = CIVIC_NOT_MODDABLE_ONLY_REMOVE
+		add = {
+			has_ascension_perk = ap_emex_advanced_sovereignty
+		}
+		remove = {
+			custom_tooltip = {
+				fail_text = CIVIC_LOCKED
+				NOT = { has_country_flag = emex_radical_reformation_blocked }
+			}
+		}
+	}
+}
+
+civic_emex_radical_xenophile = {
+	cost = 2
+	pickable_at_start = no
+	icon = "gfx/interface/icons/governments/civics/radical/civic_emex_radical_xenophile.dds"
+	description = "civic_tooltip_civic_emex_radical_xenophile_effects"
+	potential = {
+		has_country_flag = emex_radical_civics_available
+		NOT = { has_global_flag = emex_radical_civics_enabled }
+	}
+	possible = {
+		civics = {
+			NOR = {
+				text = emex_tooltip_radical_exclusive
+				value = civic_emex_radical_pacifist
+				value = civic_emex_radical_spiritualist
+				value = civic_emex_radical_materialist
+				value = civic_emex_radical_egalitarian
+				value = civic_emex_radical_authoritarian
+				value = civic_emex_radical_militarist
+				value = civic_emex_radical_xenophobe
+				value = civic_emex_radical_corporate
+			}
+		}
+		ethics = {
+			OR = {
+				value = ethic_xenophile
+				value = ethic_fanatic_xenophile
+			}
+		}
+	}
+	random_weight = { base = 0 }
+	ai_weight = {
+		base = 5
+	}
+	modifier = {
+	}
+	modification = {
+		moddable_conditions_custom_tooltip = CIVIC_NOT_MODDABLE_ONLY_REMOVE
+		add = {
+			has_ascension_perk = ap_emex_advanced_sovereignty
+		}
+		remove = {
+			custom_tooltip = {
+				fail_text = CIVIC_LOCKED
+				NOT = { has_country_flag = emex_radical_reformation_blocked }
+			}
+		}
+	}
+}
+
+civic_emex_radical_xenophobe = {
+	cost = 2
+	pickable_at_start = no
+	icon = "gfx/interface/icons/governments/civics/radical/civic_emex_radical_xenophobe.dds"
+	description = "civic_tooltip_civic_emex_radical_xenophobe_effects"
+	potential = {
+		has_country_flag = emex_radical_civics_available
+		NOT = { has_global_flag = emex_radical_civics_enabled }
+	}
+	possible = {
+		civics = {
+			NOR = {
+				text = emex_tooltip_radical_exclusive
+				value = civic_emex_radical_pacifist
+				value = civic_emex_radical_spiritualist
+				value = civic_emex_radical_materialist
+				value = civic_emex_radical_egalitarian
+				value = civic_emex_radical_authoritarian
+				value = civic_emex_radical_xenophile
+				value = civic_emex_radical_militarist
+				value = civic_emex_radical_corporate
+			}
+		}
+		ethics = {
+			OR = {
+				value = ethic_xenophobe
+				value = ethic_fanatic_xenophobe
+			}
+		}
+	}
+	random_weight = { base = 0 }
+	ai_weight = {
+		base = 5
+	}
+	modifier = {
+	}
+	modification = {
+		moddable_conditions_custom_tooltip = CIVIC_NOT_MODDABLE_ONLY_REMOVE
+		add = {
+			has_ascension_perk = ap_emex_advanced_sovereignty
+		}
+		remove = {
+			custom_tooltip = {
+				fail_text = CIVIC_LOCKED
+				NOT = { has_country_flag = emex_radical_reformation_blocked }
+			}
+		}
+	}
+}
+
+civic_emex_radical_egalitarian = {
+	cost = 2
+	pickable_at_start = no
+	icon = "gfx/interface/icons/governments/civics/radical/civic_emex_radical_egalitarian.dds"
+	description = "civic_tooltip_civic_emex_radical_egalitarian_effects"
+	potential = {
+		has_country_flag = emex_radical_civics_available
+		NOT = { has_global_flag = emex_radical_civics_enabled }
+	}
+	possible = {
+		civics = {
+			NOR = {
+				text = emex_tooltip_radical_exclusive
+				value = civic_emex_radical_pacifist
+				value = civic_emex_radical_spiritualist
+				value = civic_emex_radical_materialist
+				value = civic_emex_radical_militarist
+				value = civic_emex_radical_authoritarian
+				value = civic_emex_radical_xenophile
+				value = civic_emex_radical_xenophobe
+				value = civic_emex_radical_corporate
+			}
+		}
+		ethics = {
+			OR = {
+				value = ethic_egalitarian
+				value = ethic_fanatic_egalitarian
+			}
+		}
+	}
+	random_weight = { base = 0 }
+	ai_weight = {
+		base = 5
+	}
+	modifier = {
+	}
+	modification = {
+		moddable_conditions_custom_tooltip = CIVIC_NOT_MODDABLE_ONLY_REMOVE
+		add = {
+			has_ascension_perk = ap_emex_advanced_sovereignty
+		}
+		remove = {
+			custom_tooltip = {
+				fail_text = CIVIC_LOCKED
+				NOT = { has_country_flag = emex_radical_reformation_blocked }
+			}
+		}
+	}
+}
+
+civic_emex_radical_authoritarian = {
+	cost = 2
+	pickable_at_start = no
+	icon = "gfx/interface/icons/governments/civics/radical/civic_emex_radical_authoritarian.dds"
+	description = "civic_tooltip_civic_emex_radical_authoritarian_effects"
+	potential = {
+		has_country_flag = emex_radical_civics_available
+		NOT = { has_global_flag = emex_radical_civics_enabled }
+	}
+	possible = {
+		civics = {
+			NOR = {
+				text = emex_tooltip_radical_exclusive
+				value = civic_emex_radical_pacifist
+				value = civic_emex_radical_spiritualist
+				value = civic_emex_radical_materialist
+				value = civic_emex_radical_egalitarian
+				value = civic_emex_radical_militarist
+				value = civic_emex_radical_xenophile
+				value = civic_emex_radical_xenophobe
+				value = civic_emex_radical_corporate
+			}
+		}
+		ethics = {
+			OR = {
+				value = ethic_authoritarian
+				value = ethic_fanatic_authoritarian
+			}
+		}
+	}
+	random_weight = { base = 0 }
+	ai_weight = {
+		base = 5
+	}
+	modifier = {
+	}
+	modification = {
+		moddable_conditions_custom_tooltip = CIVIC_NOT_MODDABLE_ONLY_REMOVE
+		add = {
+			has_ascension_perk = ap_emex_advanced_sovereignty
+		}
+		remove = {
+			custom_tooltip = {
+				fail_text = CIVIC_LOCKED
+				NOT = { has_country_flag = emex_radical_reformation_blocked }
+			}
+		}
+	}
+}
+
+civic_emex_radical_corporate = {
+	cost = 2
+	pickable_at_start = no
+	icon = "gfx/interface/icons/governments/civics/radical/civic_emex_radical_corporate.dds"
+	description = "civic_tooltip_civic_emex_radical_corporate_effects"
+	potential = {
+		has_country_flag = emex_radical_civics_available
+		NOT = { has_global_flag = emex_radical_civics_enabled }
+	}
+	possible = {
+		civics = {
+			NOR = {
+				text = emex_tooltip_radical_exclusive
+				value = civic_emex_radical_pacifist
+				value = civic_emex_radical_spiritualist
+				value = civic_emex_radical_materialist
+				value = civic_emex_radical_egalitarian
+				value = civic_emex_radical_authoritarian
+				value = civic_emex_radical_xenophile
+				value = civic_emex_radical_xenophobe
+				value = civic_emex_radical_militarist
+			}
+		}
+		inline_script = governments/emex_is_corporate
+	}
+	random_weight = { base = 0 }
+	ai_weight = {
+		base = 5
+	}
+	modifier = {
+	}
+	modification = {
+		moddable_conditions_custom_tooltip = CIVIC_NOT_MODDABLE_ONLY_REMOVE
+		add = {
+			has_ascension_perk = ap_emex_advanced_sovereignty
+		}
+		remove = {
+			custom_tooltip = {
+				fail_text = CIVIC_LOCKED
+				NOT = { has_country_flag = emex_radical_reformation_blocked }
+			}
+		}
+	}
+}

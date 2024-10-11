@@ -1,0 +1,92 @@
+technocorp_conversion = {
+	potential = {
+		has_policy_flag = trade_conversion_technocorp
+	}
+	
+	weight = {
+		weight = 55
+	}
+	
+	conversion_rate = {
+		energy = 0.5
+		physics_research = 0.1
+		society_research = 0.1
+		engineering_research = 0.1
+	}
+
+	economic_category = trade_routes
+}
+
+technocorp_tradeleague_conversion = {
+	potential = {
+		has_policy_flag = trade_conversion_technocorp_tl
+	}
+	
+	weight = {
+		weight = 1
+	}
+	
+	conversion_rate = {
+		energy = 0.5
+		consumer_goods = 0.15
+		unity = 0.15
+		physics_research = 0.1
+		society_research = 0.1
+		engineering_research = 0.1
+	}
+
+	economic_category = trade_routes
+}
+
+emex_extortion_conversion = {
+	potential = {
+		has_policy_flag = emex_trade_conversion_extortion
+	}
+	
+	weight = {
+		weight = 15
+	}
+	
+	conversion_rate = {
+		energy = 0.5
+		influence = 0.01
+	}
+
+	economic_category = trade_routes
+}
+
+emex_monopsony_minerals_conversion = {
+	potential = {
+		has_policy_flag = emex_trade_conversion_monopsony
+		has_policy_flag = emex_monopsonic_exploitation_minerals
+	}
+	
+	weight = {
+		weight = 50
+	}
+	
+	conversion_rate = {
+		energy = 0.5
+		minerals = 0.25
+	}
+
+	economic_category = trade_routes
+}
+
+emex_monopsony_food_conversion = {
+	potential = {
+		has_policy_flag = emex_trade_conversion_monopsony
+		has_policy_flag = emex_monopsonic_exploitation_food
+	}
+	
+	weight = {
+		weight = 50
+	}
+	
+	conversion_rate = {
+		energy = 0.5
+		food = 0.25
+	}
+
+	economic_category = trade_routes
+}

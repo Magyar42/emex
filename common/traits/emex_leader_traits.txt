@@ -1,0 +1,121 @@
+## RULER ##
+ 
+leader_trait_emex_machinarchy_ruler = {
+	inline_script = {
+		script = trait/icon
+		CLASS = leader
+		ICON = GFX_leader_trait_caretaker
+		RARITY = common
+		COUNCIL = yes
+		TIER = none
+	}
+	#cost = 0
+	#councilor_trait = yes
+	#is_councilor_trait_for_ruler = yes
+	triggered_councilor_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_stability_add = 5
+		country_ruler_influence_produces_add = 0.5
+	}
+	leader_class = { official scientist commander }
+	initial = no
+	randomized = no
+}
+ 
+leader_trait_emex_tech_nexus = {
+	inline_script = {
+		script = trait/icon
+		ICON = GFX_leader_trait_academia_recruiter
+		RARITY = common
+		COUNCIL = yes
+		TIER = none
+	}
+	#cost = 0
+	#councilor_trait = yes
+	#is_councilor_trait_for_ruler = yes
+	triggered_councilor_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_researchers_produces_mult = 0.10
+		leader_scientists_cost_mult = -0.50
+		leader_scientists_upkeep_mult = -0.50
+	}
+	leader_class = { official scientist commander }
+	initial = no
+	randomized = no
+}
+
+trait_emex_experienced_warform = {
+	inline_script = {
+		script = trait/icon
+		CLASS = commander
+		ICON = GFX_leader_trait_attacker
+		RARITY = common
+		COUNCIL = no
+		TIER = none
+	}
+	triggered_modifier = {
+		potential = { leader_class = commander }
+		ship_tracking_add = 5
+		ship_experience_gain_mult = 0.10
+		army_health = 0.25
+	}
+	leader_class = { commander }
+	initial = no
+	randomized = no
+}
+
+leader_trait_emex_powerful_warlord = {
+	inline_script = {
+		script = trait/icon
+		CLASS = leader
+		ICON = GFX_leader_trait_legendary_militarist_bad
+		RARITY = veteran
+		COUNCIL = no
+		TIER = none
+	}
+
+	self_modifier = {
+		leaders_unity_upkeep_mult = -1
+		leaders_energy_upkeep_mult = 0.50
+	}
+
+	triggered_planet_modifier = {
+		potential = { trait_is_gestalt_check = no }
+		planet_crime_mult = -0.10
+		planet_emex_warlords_produces_mult = 0.20
+		planet_emex_warlords_upkeep_mult = 0.20
+	}
+	triggered_sector_modifier = {
+		potential = { trait_is_gestalt_check = no }
+		planet_crime_mult = -0.025
+		planet_emex_warlords_produces_mult = 0.05
+		planet_emex_warlords_upkeep_mult = 0.05
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			trait_is_gestalt_check = no
+			owner = {
+				has_valid_civic = civic_anarcho_tyranny_v2
+			}
+		}
+		trade_value_mult = 0.10
+	}
+	triggered_sector_modifier = {
+		potential = {
+			trait_is_gestalt_check = no
+			owner = {
+				has_valid_civic = civic_anarcho_tyranny_v2
+			}
+		}
+		trade_value_mult = 0.05
+	}
+
+	leader_class = { commander official }
+	initial = no
+	randomized = no
+}

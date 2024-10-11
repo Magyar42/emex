@@ -1,0 +1,321 @@
+
+## DEFAULT ##
+civic_sovereign_nations = {
+	modification = no
+	description = "civic_tooltip_civic_sovereign_nations_effects"
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		civics = {
+			NOT = {
+				text = emex_tooltip_background_exclusive
+				value = civic_strategic_cache
+				value = civic_synthetic_warfare
+				value = civic_eager_explorers
+			}
+		}
+	}
+	random_weight = { base = 0 }
+	modifier = {
+		envoys_add = 1
+		intel_encryption_add = 2
+		intel_decryption_add = 2
+		diplo_weight_mult = 0.10
+		country_unity_produces_mult = -0.10
+		pop_government_ethic_attraction = -0.50
+	}
+}
+ 
+civic_strategic_cache = {
+	modification = no
+	description = "civic_tooltip_strategic_cache_effects"
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		civics = {
+			NOT = {
+				text = emex_tooltip_background_exclusive
+				value = civic_synthetic_warfare
+				value = civic_eager_explorers
+				value = civic_sovereign_nations
+			}
+		}
+	}
+	random_weight = { base = 2 }
+	modifier = {
+		planet_jobs_volatile_motes_produces_mult = 0.15
+		planet_jobs_rare_crystals_produces_mult = 0.15
+		planet_jobs_exotic_gases_produces_mult = 0.15
+		pop_environment_tolerance = -0.10
+	}
+}
+
+civic_emex_synthetic_warfare = {
+	modification = no
+	description = "civic_tooltip_emex_synthetic_warfare_effects"
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		civics = {
+			NOT = {
+				text = emex_tooltip_background_exclusive
+				value = civic_strategic_cache
+				value = civic_eager_explorers
+				value = civic_sovereign_nations
+			}
+		}
+	}
+	random_weight = { base = 4 }
+	modifier = {
+		country_war_exhaustion_mult = -0.15
+		planet_army_build_speed_mult = -0.10
+		pop_amenities_usage_mult = 0.10
+	}
+}
+
+## HIVE MIND ##
+civic_hive_cyborgs = {
+	modification = no
+	description = "civic_tooltip_hive_cyborgs_effects"
+	potential = { authority = { value = auth_hive_mind } }
+	possible = {
+		civics = {
+			NOT = {
+				text = emex_tooltip_background_exclusive
+				value = civic_hive_environmental_integration
+				value = civic_hive_splintered
+				value = civic_hive_stargazers
+			}
+			NOT = { value = civic_hive_manipulators_of_life }
+		}
+	}
+	traits = {
+		trait = trait_cybernetic
+	}
+	random_weight = { base = 2 }
+	modifier = {
+		councilor_gestalt_cognitive_exp_gain = @gestalt_civic_node_xp_rate
+		planet_cyborg_jobs_unity_produces_mult = 0.10
+		pop_category_complex_drones_engineering_research_produces_add = 1
+		pop_growth_speed = -0.05
+	}
+}
+
+civic_hive_environmental_integration = {
+	modification = no
+	description = "civic_tooltip_environmental_integration_effects"
+	potential = { authority = { value = auth_hive_mind } }
+	possible = {
+		civics = {
+			NOT = {
+				text = emex_tooltip_background_exclusive
+				value = civic_hive_cyborgs
+				value = civic_hive_splintered
+				value = civic_hive_stargazers
+			}
+			NOT = {
+				value = civic_hive_devouring_swarm
+				value = civic_hive_relentless_industrialists
+				value = civic_hive_toxic_baths
+			}
+		}
+	}
+	traits = {
+		trait = trait_emex_symbiont
+	}
+	random_weight = { base = 2 }
+	modifier = {
+		councilor_gestalt_growth_exp_gain = @gestalt_civic_node_xp_rate
+		planet_non_artificial_max_districts_add = 2
+		category_biology_research_speed_mult = 0.10
+	}
+}
+
+civic_hive_splintered = {
+	modification = no
+	description = "civic_tooltip_hive_splintered_effects"
+	potential = { authority = { value = auth_hive_mind } }
+	possible = {
+		civics = {
+			NOT = {
+				text = emex_tooltip_background_exclusive
+				value = civic_hive_cyborgs
+				value = civic_hive_environmental_integration
+				value = civic_hive_stargazers
+			}
+			NOT = {
+				value = civic_hive_one_mind
+			}
+		}
+	}
+	random_weight = { base = 1 }
+	modifier = {
+		councilor_gestalt_regulatory_exp_gain = @gestalt_civic_node_xp_rate
+		envoys_add = 1
+		intel_encryption_add = 2
+		intel_decryption_add = 2
+		country_unity_produces_mult = -0.10
+	}
+}
+
+## MACHINE INTELLIGENCE ##
+civic_machine_selfreplicating_machines = {
+	modification = no
+	description = "civic_tooltip_selfreplicating_machines_effects"
+	potential = { authority = { value = auth_machine_intelligence } }
+	possible = {
+		civics = {
+			NOT = {
+				text = emex_tooltip_background_exclusive
+				value = civic_emex_machine_synthetic_evolution
+				value = civic_machine_mighty_processors
+				value = civic_machine_exploration_protocol
+			}
+		}
+	}
+	random_weight = { base = 3 }
+	modifier = {
+		councilor_gestalt_growth_exp_gain = @gestalt_civic_node_xp_rate
+		ship_hull_regen_add_perc = 0.5
+		#planet_pop_assemblers_nanites_produces_add = 0.5
+		planet_pop_assembly_mult = 0.10
+		#planet_pop_assemblers_nanites_upkeep_add = 0.25 # no worky
+		pop_category_drones_nanites_upkeep_add = 0.1
+	}
+	# Assembler jobs now longer changed, now just replaced by Nanite Synthesizers
+}
+
+civic_machine_mighty_processors = {
+	modification = no
+	description = "civic_tooltip_mighty_processors_effects"
+	potential = { authority = { value = auth_machine_intelligence } }
+	possible = {
+		civics = {
+			NOT = {
+				text = emex_tooltip_background_exclusive
+				value = civic_machine_selfreplicating_machines
+				value = civic_emex_machine_synthetic_evolution
+				value = civic_machine_exploration_protocol
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_machine_terminator
+				value = civic_machine_assimilator
+			}
+		}
+	}
+	traits = {
+		trait = trait_advanced_processors
+	}
+	random_weight = { base = 5 }
+	modifier = {
+		councilor_gestalt_growth_exp_gain = @gestalt_civic_node_xp_rate
+		empire_size_penalty_mult = -0.50
+		country_naval_cap_mult = 0.15
+		ship_speed_mult = -0.10
+	}
+}
+
+civic_emex_machine_synthetic_evolution = {
+	modification = no
+	description = "civic_tooltip_emex_machine_synthetic_evolution_effects"
+	potential = { authority = { value = auth_machine_intelligence } }
+	possible = {
+		civics = {
+			NOT = {
+				text = emex_tooltip_background_exclusive
+				value = civic_machine_selfreplicating_machines
+				value = civic_machine_mighty_processors
+				value = civic_machine_exploration_protocol
+			}
+		}
+	}
+	traits = {
+		trait = trait_emex_rudimentary_synthetics
+	}
+	random_weight = { base = 0 }
+	modifier = {
+		councilor_gestalt_regulatory_exp_gain = @gestalt_civic_node_xp_rate
+		MACHINE_species_trait_points_add = 1
+		MACHINE_species_trait_picks_add = 2
+		category_industry_draw_chance_mult = 0.20
+		planet_crime_no_happiness_mult = 0.10
+	}
+}
+
+## MEGA CORP ##
+
+civic_emex_interplanetary_monopsony = {
+	modification = no
+	description = "civic_tooltip_emex_interplanetary_monopsony_effects"
+	potential = { authority = { value = auth_corporate } }
+	possible = {
+		civics = {
+			NOT = {
+				text = emex_tooltip_background_exclusive
+				value = civic_emex_cache_exploitation
+				value = civic_emex_rapacious_warforms
+				value = civic_privatized_exploration
+			}
+		}
+	}
+	random_weight = { base = 3 }
+	modifier = {
+		branch_office_value_mult = 0.15
+		planet_emex_independent_workers_energy_upkeep_add = -0.5
+		planet_miners_minerals_produces_add = -2
+		planet_farmers_food_produces_add = -2
+	}
+}
+
+civic_emex_rapacious_warforms = {
+	modification = no
+	description = "civic_tooltip_emex_synthetic_warfare_effects"
+	potential = { authority = { value = auth_corporate } }
+	possible = {
+		civics = {
+			NOT = {
+				text = emex_tooltip_background_exclusive
+				value = civic_emex_cache_exploitation
+				value = civic_emex_interplanetary_monopsony
+				value = civic_privatized_exploration
+			}
+		}
+	}
+	random_weight = { base = 4 }
+	modifier = {
+		country_war_exhaustion_mult = -0.15
+		army_experience_gain_mult = -0.10
+		pop_amenities_usage_mult = 0.10
+	}
+}
+
+civic_emex_cache_exploitation = {
+	modification = no
+	description = "civic_tooltip_strategic_cache_effects"
+	potential = { authority = { value = auth_corporate } }
+	possible = {
+		civics = {
+			NOT = {
+				text = emex_tooltip_background_exclusive
+				value = civic_emex_rapacious_warforms
+				value = civic_emex_interplanetary_monopsony
+				value = civic_privatized_exploration
+			}
+		}
+	}
+	random_weight = { base = 2 }
+	modifier = {
+		planet_jobs_volatile_motes_produces_mult = 0.15
+		planet_jobs_rare_crystals_produces_mult = 0.15
+		planet_jobs_exotic_gases_produces_mult = 0.15
+		pop_environment_tolerance = -0.10
+	}
+}

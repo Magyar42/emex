@@ -1,0 +1,84 @@
+per_relation = {
+	# scope: this = current country, FROM : other country in the relation
+	research_agreement = {
+		trigger = {
+			has_research_agreement = FROM
+			NOT = {
+				AND = {
+					has_federation = yes
+					federation = { has_federation_perk = diplomacy_upkeep_1 }
+					federation = { any_member = { is_same_value = FROM } }
+				}
+			}
+		}
+
+		resources = {
+			category = research_agreements
+			upkeep = {
+				# EMEX Begin
+				trigger = {
+					NOT = {
+						is_emex_open_source = yes
+					}
+				}
+				# EMEX End
+				influence = 0.25
+			}
+			# EMEX Begin
+			produces = {
+				trigger = {
+					is_emex_open_source = yes
+				}
+				unity = 10
+			}
+			# EMEX End
+		}
+	}
+
+	migration_pact = {
+		trigger = {
+			has_diplo_migration_treaty = FROM
+			NOT = {
+				AND = {
+					has_federation = yes
+					federation = { has_federation_perk = diplomacy_upkeep_1 }
+					federation = { any_member = { is_same_value = FROM } }
+				}
+			}
+			NOT = {
+				AND = {
+					has_federation = yes
+					federation = { has_federation_law = free_migration_yes }
+					federation = { any_member = { is_same_value = FROM } }
+				}
+			}
+		}
+		resources = {
+			category = migration_pacts
+			upkeep = {
+				# EMEX Begin
+				trigger = {
+					NOT = {
+						is_emex_culture_empire = yes
+					}
+				}
+				# EMEX End
+				influence = 0.25
+			}
+			# EMEX Begin
+			produces = {
+				trigger = {
+					is_emex_culture_empire = yes
+				}
+				influence = 0.25
+			}
+			produces = {
+				trigger = {
+					FROM = { is_emex_culture_empire = yes }
+				}
+				unity = 10
+			}
+			# EMEX End
+		}
+	}
+}

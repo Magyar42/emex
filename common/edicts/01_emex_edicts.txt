@@ -1,0 +1,262 @@
+@Edict1Cost = 10
+@Edict2Cost = 20
+@Edict3Cost = 30
+
+@EdictDuration = 3600
+@EdictDuration2 = 5000
+@EdictPerpetual = -1
+@campaignCost = 15
+
+community_cooperation = {
+	length = @EdictPerpetual
+	icon = "GFX_edict_type_policy"
+	
+	resources = {
+		category = edicts
+		upkeep = {
+			unity = @Edict1Cost
+			multiplier = value:edict_size_effect
+		}
+	}
+
+	modifier = {
+		pop_government_ethic_attraction = 0.50
+		country_unity_produces_mult = 0.10
+		diplo_weight_mult = 0.05
+		#envoys_add = 1
+		country_energy_produces_mult = -0.10
+	}
+
+	potential = {
+		is_country_type = default
+		has_tradition = tr_gc_finish
+	}
+
+	ai_weight = {
+		weight = 5
+	}
+}
+
+# TODO
+# dl_leak_data = {
+# 	length = 30
+# 	icon = "GFX_edict_type_time"
+	
+# 	resources = {
+# 		category = edicts
+# 		upkeep = {
+# 			unity = @campaignCost
+# 			multiplier = value:edict_size_effect
+# 		}
+# 	}
+
+# 	modifier = {
+# 	}
+	
+# 	effect = {
+# 		start_situation = {
+# 			type = situation_liberating_data
+# 			target = root
+# 		}
+# 		#custom_tooltip = dl_leak_data_tt
+# 	}
+
+# 	potential = {
+# 		has_valid_civic = civic_data_liberationists
+# 	}
+	
+# 	allow = { #check
+# 		any_playable_country = {
+# 			has_country_flag = data_stolen_by_@root
+# 		}
+# 	}
+	
+# 	ai_weight = {
+# 		weight = 10
+# 	}
+# }
+
+sc_council_upkeep = { 
+	length = 0
+	icon = "GFX_edict_type_policy"
+	
+	resources = {
+		category = edicts
+		cost = {
+			unity = 75
+			multiplier = value:edict_size_effect
+		}
+	}
+
+	modifier = {
+	}
+
+	effect = {
+		if = {
+			limit = {
+				NOT = { has_country_flag = sc_unity_focus }
+			}
+			set_country_flag = sc_unity_focus
+			custom_tooltip = sc_council_upkeep_unity_tt
+		}
+		else_if = {
+			limit = {
+				has_country_flag = sc_unity_focus
+			}
+			remove_country_flag = sc_unity_focus
+			custom_tooltip = sc_council_upkeep_influence_tt
+		}
+	}
+
+	potential = {
+		OR = {
+			has_valid_civic = civic_world_council
+			has_valid_civic = civic_hive_council
+		}
+	}
+
+	allow = {
+		#NOT = { has_country_flag = sc_unity_focus }
+	}
+
+	ai_weight = {
+		weight = 5
+	}
+}
+
+machinarchy_aa_boon = { 
+	length = 0
+	icon = "GFX_edict_type_policy"
+	
+	resources = {
+		category = edicts
+		cost = {
+			unity = 100
+			multiplier = value:edict_size_effect
+		}
+	}
+
+	modifier = {
+	}
+
+	effect = {
+		custom_tooltip = decision_machinarchy_aa_tt
+		hidden_effect = {
+			planet_event = { id = emex_civic.10 }
+			machinarchy_aa_reset = yes
+		}
+	}
+
+	potential = {
+		is_country_type = default
+		has_valid_civic = civic_machinarchy
+	}
+
+	allow = {
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+emex_mineral_compositions_overload = {
+	length = @EdictPerpetual
+	icon = "GFX_edict_type_policy"
+	
+	resources = {
+		category = edicts
+		upkeep = {
+			unity = @Edict1Cost
+			multiplier = value:edict_size_effect
+		}
+	}
+
+	modifier = {
+		planet_jobs_robotic_produces_mult = 0.10
+		planet_pops_robotics_rare_crystals_upkeep_add = 0.05
+	}
+
+	potential = {
+		has_valid_civic = civic_machine_mineral_compositions
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = @EdictLowPrio
+			has_resource = { type = unity amount > 100 }
+		}
+	}
+}
+
+emex_industrial_processes = {
+	length = @EdictPerpetual
+	icon = "GFX_edict_type_policy"
+	
+	resources = {
+		category = edicts
+		upkeep = {
+			unity = @Edict1Cost
+			multiplier = value:edict_size_effect
+		}
+	}
+
+	modifier = {
+		planet_jobs_alloys_produces_mult = 0.10 
+		planet_jobs_consumer_goods_produces_mult = 0.10
+		pop_category_specialists_volatile_motes_upkeep_add = 0.05
+		pop_category_specialists_rare_crystals_upkeep_add = 0.05
+		pop_category_specialists_exotic_gases_upkeep_add = 0.05
+	}
+
+	potential = {
+		OR = {
+			has_valid_civic = civic_strategic_cache
+			has_valid_civic = civic_emex_cache_exploitation
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+emex_shadow_wars = {
+	length = @EdictPerpetual
+	icon = "GFX_edict_type_policy"
+
+	resources = {
+		category = edicts
+		cost = {
+			influence = 100
+		}
+		upkeep = {
+			trigger = {
+				has_valid_civic = civic_shadow_council
+			}
+			influence = 0.49
+		}
+		upkeep = {
+			trigger = {
+				NOT = { has_valid_civic = civic_shadow_council }
+			}
+			influence = 1
+		}
+	}
+
+	modifier = {
+	}
+
+	effect = {
+		custom_tooltip = emex_shadow_wars_tt
+	}
+
+	potential = {
+		emex_is_subversive = yes
+	}
+
+	ai_weight = {
+		weight = @EdictLowPrio
+	}
+}

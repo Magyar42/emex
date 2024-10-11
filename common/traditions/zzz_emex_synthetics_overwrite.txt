@@ -1,0 +1,106 @@
+tr_synthetics_adopt = {
+	possible = {
+		if = {
+			limit = { is_machine_empire = no }
+			has_ascension_perk = ap_synthetic_evolution
+			has_technology = tech_synthetic_leaders
+		}
+		else = {
+			OR = {
+				has_ascension_perk = ap_synthetic_age
+				has_valid_civic = civic_emex_machine_synthetic_evolution # EMEX
+			}
+			has_technology = tech_robomodding_m
+		}
+	}
+
+	unlocks_agenda = agenda_synthetic_yield
+	modifier = {
+		planet_pops_robotics_upkeep_mult = -0.25
+		planet_pop_assemblers_upkeep_mult = -0.25
+	}
+
+	tradition_swap = {
+		name = tr_synthetics_adopt_machine
+		inherit_name = yes
+		inherit_icon = yes
+		custom_tooltip = tr_synthetics_adopt_machine_desc
+		trigger = {
+			is_machine_empire = yes
+		}
+		weight = {
+			factor = 1
+		}
+	}
+	on_enabled = {
+		hidden_effect = {
+			country_event = { id = utopia.2545 }
+			if = {
+				limit = {
+					any_planet_within_border = {
+						has_planet_flag = fotd_seperatist_planet@root
+						owner = {
+							has_country_flag = fotd_seperatist_country@root
+						}
+					}
+				}
+				country_event = { id = origin.6099 days = 5 random = 2 }
+			}
+		}
+	}
+}
+
+tr_synthetics_finish = {
+	modifier = {
+		ROBOT_species_trait_picks_add = 1
+		ascension_perks_add = 1
+	}
+	custom_tooltip = tr_synthetics_finish_desc
+
+	tradition_swap = {
+		name = tr_synthetics_finish_machine
+		inherit_name = no
+		inherit_icon = yes
+		inherit_effects = no
+		custom_tooltip = tr_synthetics_finish_machine_desc
+		trigger = {
+			is_machine_empire = yes
+			NOT = { has_valid_civic = civic_emex_machine_synthetic_evolution }
+		}
+		on_enabled = {
+			hidden_effect = {
+				machine_synthetic_leader_effect = yes
+			}
+		}
+		modifier = {
+			ascension_perks_add = 1
+		}
+		weight = {
+			factor = 1
+		}
+	}
+
+	# EMEX begin
+	tradition_swap = {
+		name = tr_synthetics_finish_machine_rudimentary_emex
+		inherit_name = yes
+		inherit_icon = yes
+		trigger = {
+			has_valid_civic = civic_emex_machine_synthetic_evolution
+		}
+		custom_tooltip = rs_emex_completed
+		on_enabled = {
+			hidden_effect = {
+				modify_species = {
+					species = this
+					remove_trait = trait_emex_rudimentary_synthetics
+				}
+				machine_synthetic_leader_effect = yes
+			}
+		}
+		modifier = {
+			ascension_perks_add = 1
+		}
+	}
+	# EMEX end
+}

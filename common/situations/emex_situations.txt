@@ -1,0 +1,437 @@
+emex_counter_blight = {
+	picture = GFX_evt_ongoing_disaster
+	complete_icon_frame = GFX_situation_outcome_frame_red
+	complete_icon = GFX_situation_outcome_revolt
+	category = negative
+
+	on_progress_complete = {
+		custom_tooltip = situation_emex_blight_outcome
+		hidden_effect = {
+			owner = { country_event = { id = emex_civic.61 }}
+			destroy_situation = root
+		}
+	}
+
+	stages = {
+		stage_1 = {
+			icon = GFX_situation_stage_1
+			icon_background = GFX_situation_stage_frame_red
+			end = 25
+		}
+		stage_2 = {
+			icon = GFX_situation_stage_2
+			icon_background = GFX_situation_stage_frame_red
+			end = 75
+		}
+		stage_3 = {
+			icon = GFX_situation_stage_3
+			icon_background = GFX_situation_stage_frame_red
+			end = 100
+		}
+	}
+
+	approach = { # 1 - Leave Be
+		name = approach_emex_blight_1
+		icon = GFX_situation_approach_this_is_fine
+		icon_background = GFX_situation_approach_bg_red
+
+		potential = {
+		}
+		allow = {
+			custom_tooltip = {
+				fail_text = too_late_to_change_approach
+				OR = {
+					NOT = { has_situation_flag = path_locked }
+					current_situation_approach = approach_emex_blight_1
+				}
+			}
+		}
+
+		resources = {
+		}
+
+		modifier = {
+		}
+	}
+	approach = { # 2 - Small Defense
+		name = approach_emex_blight_2
+		icon = GFX_situation_approach_balance_sheet
+		icon_background = GFX_situation_approach_bg_yellow
+		default = yes
+
+		potential = {
+		}
+		allow = {
+			custom_tooltip = {
+				fail_text = too_late_to_change_approach
+				OR = {
+					NOT = { has_situation_flag = path_locked }
+					current_situation_approach = approach_emex_blight_2
+				}
+			}
+		}
+
+		resources = {
+			category = situations
+			upkeep = {
+				unity = 5
+				energy = 5
+			}
+		}
+
+		modifier = {
+		}
+	}
+	approach = { # 3 - Counter Espionage
+		name = approach_emex_blight_3
+		icon = GFX_situation_approach_fist
+		icon_background = GFX_situation_approach_bg_green
+
+		potential = {
+		}
+		allow = {
+			custom_tooltip = {
+				fail_text = too_late_to_change_approach
+				OR = {
+					NOT = { has_situation_flag = path_locked }
+					current_situation_approach = approach_emex_blight_3
+				}
+			}
+		}
+
+		resources = {
+			category = situations
+			upkeep = {
+				unity = 15
+				energy = 20
+			}
+		}
+
+		modifier = {
+			planet_jobs_produces_mult = -0.1
+		}
+	}
+
+	on_monthly = {
+	}
+
+	monthly_progress = {
+		base = 4
+		# Relative Encryption
+		modifier = {
+			add = -3.9
+			desc = situation_emex_blight_encryption
+			root.owner = {
+				relative_encryption_decryption = {
+					target = event_target:emex_blight_actor@root.owner
+					value >= 5.0
+				}
+			}
+		}
+		modifier = {
+			add = -3
+			desc = situation_emex_blight_encryption
+			root.owner = {
+				relative_encryption_decryption = {
+					target = event_target:emex_blight_actor@root.owner
+					value >= 3.0
+				}
+			}
+		}
+		modifier = {
+			add = -2
+			desc = situation_emex_blight_encryption
+			root.owner = {
+				relative_encryption_decryption = {
+					target = event_target:emex_blight_actor@root.owner
+					value >= 2.5
+				}
+			}
+		}
+		modifier = {
+			add = -1.5
+			desc = situation_emex_blight_encryption
+			root.owner = {
+				relative_encryption_decryption = {
+					target = event_target:emex_blight_actor@root.owner
+					value >= 2.0
+				}
+			}
+		}
+		modifier = {
+			add = -1
+			desc = situation_emex_blight_encryption
+			root.owner = {
+				relative_encryption_decryption = {
+					target = event_target:emex_blight_actor@root.owner
+					value >= 1.5
+				}
+			}
+		}
+		modifier = {
+			add = -0.5
+			desc = situation_emex_blight_encryption
+			root.owner = {
+				relative_encryption_decryption = {
+					target = event_target:emex_blight_actor@root.owner
+					value >= 1.0
+				}
+			}
+		}
+		# Approaches
+		modifier = {
+			add = 1
+			desc = situation_emex_blight_approach
+			current_situation_approach = approach_emex_blight_1
+		}
+		modifier = {
+			add = -1.5
+			desc = situation_emex_blight_approach
+			current_situation_approach = approach_emex_blight_3
+		}
+		# Counter Events
+		modifier = {
+			add = -1
+			desc = situation_emex_blight_counter
+			has_situation_flag = emex_blight_counter_1
+		}
+		modifier = {
+			add = -1.5
+			desc = situation_emex_blight_counter
+			has_situation_flag = emex_blight_counter_2
+		}
+		modifier = {
+			add = -1.5
+			desc = situation_emex_blight_counter
+			has_situation_flag = emex_blight_counter_3
+		}
+	}
+
+	abort_trigger = {
+		owner = {
+			OR = {
+				has_blight_civic_emex = yes
+				is_valid_blight_target_emex = no
+			}
+		}
+	}
+}
+
+emex_plague_eradication = {
+	picture = GFX_evt_disease_outbreak
+	complete_icon_frame = GFX_situation_outcome_frame_blue
+	complete_icon = GFX_situation_outcome_positive
+	on_progress_complete = {
+		custom_tooltip = emex_plague_eradication_outcome
+		hidden_effect = {
+			owner = {
+				country_event = {
+					id = emex_origin1.9
+				}
+			}
+		}
+		set_situation_locked = yes
+	}
+	stages = {
+		stage_1 = {
+			icon = GFX_situation_stage_1
+			icon_background = GFX_situation_stage_frame_blue
+			end = 50
+			#custom_tooltip = stage_knights_effects
+		}
+		stage_2 = {
+			icon = GFX_situation_stage_2
+			icon_background = GFX_situation_stage_frame_blue
+			end = 100
+			on_first_enter = {
+				# todo event
+			}
+			#custom_tooltip = stage_knights_effects
+		}
+		stage_3 = {
+			icon = GFX_situation_stage_3
+			icon_background = GFX_situation_stage_frame_blue
+			end = 200
+			on_first_enter = {
+				# todo event
+			}
+			#custom_tooltip = stage_knights_effects
+		}
+	}
+	approach = {
+		name = emex_plague_eradication_approach_0
+		icon = GFX_situation_approach_shrug
+		icon_background = GFX_situation_approach_bg_red
+		on_select = {
+			custom_tooltip = emex_plague_eradication_approach_0_tt
+		}
+		default = yes
+		modifier = {
+			# todo
+		}
+
+		allow = {
+			NOT = {
+				owner = {
+					has_technology = tech_emex_finalised_vaccine_testing
+				}
+			}
+		}
+	}
+	approach = {
+		name = emex_plague_eradication_approach_1
+		icon = GFX_situation_approach_balance_sheet
+		icon_background = GFX_situation_approach_bg_yellow
+		on_select = {
+			custom_tooltip = emex_plague_eradication_approach_1_tt
+		}
+		modifier = {
+			country_society_research_produces_mult = 0.05
+		}
+
+		allow = {
+			owner = {
+				has_technology = tech_emex_finalised_vaccine_testing
+			}
+		}
+	}
+	approach = {
+		name = emex_plague_eradication_approach_2
+		icon = GFX_situation_approach_genetics
+		icon_background = GFX_situation_approach_bg_green
+		resources = {
+   			category = situations
+   			upkeep = {
+				energy = 25
+				consumer_goods = 25
+			}
+		}
+
+		on_select = {
+			custom_tooltip = emex_plague_eradication_approach_2_tt
+		}
+		modifier = {
+			country_society_research_produces_mult = 0.10
+			pop_happiness = 0.05
+		}
+
+		allow = {
+			owner = {
+				has_technology = tech_emex_finalised_vaccine_testing
+			}
+		}
+	}
+	on_monthly = {
+		events = {
+	    }
+		random_events = {
+		}
+	}
+	monthly_progress = {
+		base = 0
+		modifier = {
+			add = 2
+			desc = emex_plague_eradication_approach_1
+			current_situation_approach = emex_plague_eradication_approach_1
+		}
+		modifier = {
+			add = 4
+			desc = emex_plague_eradication_approach_2
+			current_situation_approach = emex_plague_eradication_approach_2
+		}
+	}
+}
+
+emex_homeworld_restoration = {
+	picture = GFX_evt_underground_city
+	complete_icon_frame = GFX_situation_outcome_frame_blue
+	complete_icon = GFX_situation_outcome_positive
+	on_progress_complete = {
+		custom_tooltip = emex_homeworld_restoration_outcome
+		hidden_effect = {
+			owner = {
+				country_event = {
+					id = emex_origin1.10
+				}
+			}
+		}
+		set_situation_locked = yes
+	}
+	stages = {
+		stage_1 = {
+			icon = GFX_situation_stage_1
+			icon_background = GFX_situation_stage_frame_blue
+			end = 50
+			#custom_tooltip = stage_knights_effects
+		}
+		stage_2 = {
+			icon = GFX_situation_stage_2
+			icon_background = GFX_situation_stage_frame_blue
+			end = 100
+			on_first_enter = {
+				# todo event
+			}
+			#custom_tooltip = stage_knights_effects
+		}
+		# stage_3 = {
+		# 	icon = GFX_situation_stage_3
+		# 	icon_background = GFX_situation_stage_frame_blue
+		# 	end = 100
+		# 	on_first_enter = {
+		# 		# todo event
+		# 	}
+		# 	custom_tooltip = stage_knights_effects
+		# }
+	}
+	approach = {
+		name = emex_homeworld_restoration_approach_0
+		icon = GFX_situation_approach_shrug
+		icon_background = GFX_situation_approach_bg_red
+		on_select = {
+			custom_tooltip = emex_homeworld_restoration_approach_0_tt
+		}
+		default = yes
+		modifier = {
+			# todo
+		}
+
+		allow = {
+			NOT = {
+				owner = {
+					has_technology = tech_emex_atmospheric_purification
+				}
+			}
+		}
+	}
+	approach = {
+		name = emex_homeworld_restoration_approach_1
+		icon = GFX_situation_approach_handshake
+		icon_background = GFX_situation_approach_bg_green
+		on_select = {
+			custom_tooltip = emex_homeworld_restoration_approach_1_tt
+		}
+		modifier = {
+			country_society_research_produces_mult = 0.05
+		}
+
+		allow = {
+			owner = {
+				has_technology = tech_emex_atmospheric_purification
+			}
+		}
+	}
+	on_monthly = {
+		events = {
+	    }
+		random_events = {
+		}
+	}
+	monthly_progress = {
+		base = 0
+		modifier = {
+			add = 2
+			desc = emex_homeworld_restoration_approach_1
+			current_situation_approach = emex_homeworld_restoration_approach_1
+		}
+	}
+}

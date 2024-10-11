@@ -1,0 +1,388 @@
+namespace = emex_origin1
+
+# Set Up
+event = {
+	id = emex_origin1.0
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		every_playable_country = {
+			limit = { has_origin = origin_emex_contagion_outbreak }
+			country_event = { id = emex_origin1.1 }
+		}
+	}
+}
+
+# Set Up
+country_event = {
+	id = emex_origin1.1
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = { has_country_flag = emex_contagion_outbreak_set_up_complete }
+	}
+	
+	immediate = {
+		capital_scope = { 
+			add_modifier = {
+				modifier = "emex_contagion_widespread"
+			}
+			add_deposit = d_emex_infectious_air
+			add_deposit = d_emex_subterranean_refuge_1
+			add_deposit = d_emex_subterranean_refuge_2
+			add_deposit = d_emex_contaminated_dwellings
+			add_deposit = d_emex_disease_laboratories
+			remove_deposit = d_decrepit_dwellings
+			set_planet_flag = emex_contagion_planet
+			set_planet_flag = emex_contagion_planet@root
+			while = {
+				count = 2
+				random_owned_pop = {
+					kill_pop = yes
+				}
+			}
+			save_event_target_as = emex_contagion_planet@root
+		}
+		give_technology = { message = no tech = tech_genome_mapping }
+		give_technology = { message = no tech = tech_gene_tailoring }
+		add_research_option = tech_emex_viral_structual_mapping
+		start_situation = { type = emex_plague_eradication target = root }
+		start_situation = { type = emex_homeworld_restoration target = event_target:emex_contagion_planet@root }
+		set_country_flag = emex_contagion_outbreak_set_up_complete
+	}
+}
+
+# on_tech_increased - Contamination Removal / Deep-core Excavation / Cleansing Chemicals
+country_event = {
+	id = emex_origin1.2
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_origin = origin_emex_contagion_outbreak
+		OR = {
+			last_increased_tech = tech_emex_contamination_removal
+			last_increased_tech = tech_emex_deep_core_excavation
+			last_increased_tech = tech_emex_cleansing_chemicals
+		}
+	}
+	
+	immediate = {
+		random_situation = {
+			limit = {
+				is_situation_type = emex_homeworld_restoration
+			}
+			add_situation_progress = 5
+		}
+	}
+}
+
+# on_tech_increased - Viral Structural Mapping / Deoxyribose Sampling / Plague Emulation Testing
+country_event = {
+	id = emex_origin1.3
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_origin = origin_emex_contagion_outbreak
+		OR = {
+			last_increased_tech = tech_emex_viral_structual_mapping
+			last_increased_tech = tech_emex_deoxyribose_sampling
+			last_increased_tech = tech_emex_plague_emulation_testing
+		}
+	}
+	
+	immediate = {
+		random_situation = {
+			limit = {
+				is_situation_type = emex_plague_eradication
+			}
+			add_situation_progress = 15
+		}
+	}
+}
+
+# on_tech_increased - Atmospheric Purification
+country_event = {
+	id = emex_origin1.4
+	title = "emex_origin1.4.name"
+	desc = "emex_origin1.4.desc"
+	picture = GFX_evt_colony_settlement
+	location = home_planet
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_origin = origin_emex_contagion_outbreak
+		last_increased_tech = tech_emex_atmospheric_purification
+	}
+	
+	immediate = {
+		random_situation = {
+			limit = {
+				is_situation_type = emex_homeworld_restoration
+			}
+			set_situation_approach = emex_homeworld_restoration_approach_1
+		}
+	}
+
+	option = {
+		name = "emex_origin1.4.a"
+		every_owned_planet = {
+			limit = {
+				has_planet_flag = emex_contagion_planet
+			}
+			enable_special_project = {
+				name = EMEX_CONTAGION_PURIFICATION
+				location = THIS
+			}
+		}
+	}
+}
+
+# on_tech_increased - Rehabilitation Programs
+country_event = {
+	id = emex_origin1.5
+	title = "emex_origin1.5.name"
+	desc = "emex_origin1.5.desc"
+	picture = GFX_evt_emergency_workers
+	location = home_planet
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_origin = origin_emex_contagion_outbreak
+		last_increased_tech = tech_emex_rehabilitation_programs
+	}
+	
+	immediate = {
+	}
+
+	option = {
+		name = "emex_origin1.5.a"
+		every_owned_planet = {
+			limit = {
+				has_planet_flag = emex_contagion_planet
+			}
+			enable_special_project = {
+				name = EMEX_CONTAGION_REHAB
+				location = THIS
+			}
+		}
+	}
+}
+
+# on_tech_increased - Finalised Vaccine Testing
+country_event = {
+	id = emex_origin1.6
+	title = "emex_origin1.6.name"
+	desc = "emex_origin1.6.desc"
+	picture = GFX_evt_ongoing_disaster
+	location = home_planet
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_origin = origin_emex_contagion_outbreak
+		last_increased_tech = tech_emex_finalised_vaccine_testing
+	}
+	
+	immediate = {
+		random_situation = {
+			limit = {
+				is_situation_type = emex_plague_eradication
+			}
+			add_situation_progress = 30
+			set_situation_approach = emex_plague_eradication_approach_1
+		}
+	}
+
+	option = {
+		name = "emex_origin1.6.a"
+	}
+}
+
+# SP: Atmospheric Purification Completed
+country_event = {
+	id = emex_origin1.7
+	title = "emex_origin1.7.name"
+	desc = "emex_origin1.7.desc"
+	picture = GFX_evt_ongoing_disaster
+	location = home_planet
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_origin = origin_emex_contagion_outbreak
+	}
+	
+	immediate = {
+	}
+
+	option = {
+		name = "emex_origin1.7.a"
+		random_situation = {
+			limit = {
+				is_situation_type = emex_homeworld_restoration
+			}
+			add_situation_progress = 20
+		}
+		every_owned_planet = {
+			limit = {
+				has_planet_flag = emex_contagion_planet
+			}
+			remove_deposit = d_emex_infectious_air
+		}
+		add_monthly_resource_mult = {
+			resource = society_research
+			value = 12
+			min = 1000
+			max = 9999
+		}
+	}
+}
+
+# SP: Rehabilitation Completed
+country_event = {
+	id = emex_origin1.8
+	title = "emex_origin1.8.name"
+	desc = "emex_origin1.8.desc"
+	picture = GFX_evt_failed_observation
+	location = home_planet
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_origin = origin_emex_contagion_outbreak
+	}
+	
+	immediate = {
+	}
+
+	option = {
+		name = "emex_origin1.8.a"
+		random_situation = {
+			limit = {
+				is_situation_type = emex_homeworld_restoration
+			}
+			add_situation_progress = 15
+		}
+		every_owned_planet = {
+			limit = {
+				has_planet_flag = emex_contagion_planet
+			}
+			add_modifier = {
+				modifier = emex_contagion_rehab
+				days = 3600
+			}
+		}
+	}
+}
+
+# Situation Completed: Plague Eradication
+country_event = {
+	id = emex_origin1.9
+	title = "emex_origin1.9.name"
+	desc = "emex_origin1.9.desc"
+	picture = GFX_evt_crisis_defeated
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_origin = origin_emex_contagion_outbreak
+	}
+	
+	immediate = {
+		random_situation = {
+			limit = {
+				is_situation_type = emex_plague_eradication
+			}
+			destroy_situation = this
+		}
+	}
+
+	option = {
+		name = "emex_origin1.9.a"
+		modify_species = {
+			species = this
+			remove_trait = trait_emex_contagion
+			add_trait = trait_emex_contagion_ascendant
+		}
+		add_monthly_resource_mult = {
+			resource = unity
+			value = 24
+			min = 2500
+			max = 25000
+		}
+		add_resource = {
+			influence = 150
+		}
+		add_modifier = {
+			modifier = emex_contagion_defeated
+		}
+	}
+}
+
+# Situation Completed: Homeworld Restoration
+country_event = {
+	id = emex_origin1.10
+	title = "emex_origin1.10.name"
+	desc = "emex_origin1.10.desc"
+	picture = GFX_evt_arena
+	location = home_planet
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_origin = origin_emex_contagion_outbreak
+	}
+	
+	immediate = {
+		random_situation = {
+			limit = {
+				is_situation_type = emex_homeworld_restoration
+			}
+			destroy_situation = this
+		}
+	}
+
+	option = {
+		name = "emex_origin1.10.a"
+		every_owned_planet = {
+			limit = {
+				has_planet_flag = emex_contagion_planet
+			}
+			remove_modifier = emex_contagion_widespread
+			hidden_effect = {
+				while = {
+					count = 4
+					create_pop = {
+						species = THIS
+					}
+				}
+			}
+			custom_tooltip = emex_contagion_pop_boon
+		}
+		add_monthly_resource_mult = {
+			resource = unity
+			value = 24
+			min = 2500
+			max = 25000
+		}
+		add_monthly_resource_mult = {
+			resource = society_research
+			value = 36
+			min = 2500
+			max = 25000
+		}
+		add_resource = {
+			influence = 150
+		}
+	}
+}

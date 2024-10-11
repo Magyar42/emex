@@ -1,0 +1,59 @@
+# Fracking World
+col_emex_fracking = {
+	icon = GFX_emex_fracking_world
+
+	potential = {
+		has_modifier = emex_fracking_colony
+	}
+
+	planet_modifier = { 
+		planet_jobs_minerals_produces_mult = 1.00
+		planet_jobs_produces_mult = -0.50
+		pop_growth_speed = -0.50
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_ascension_perk = ap_emex_intergalactic_monopsonists }
+		}
+		modifier = {
+			pop_growth_speed = 0.25
+			planet_jobs_minerals_produces_mult = 0.10
+		}
+	}
+
+	weight_modifier = {
+		base = 1000
+	}
+}
+
+# Cultivating World
+col_emex_cultivating = {
+	icon = GFX_emex_cultivating_world
+
+	potential = {
+		has_modifier = emex_cultivating_colony
+	}
+
+	planet_modifier = { 
+		planet_jobs_food_produces_mult = 1.00
+		planet_jobs_produces_mult = -0.50
+		pop_growth_speed = -0.50
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_ascension_perk = ap_emex_intergalactic_monopsonists }
+		}
+		modifier = {
+			pop_growth_speed = 0.25
+			planet_jobs_food_produces_mult = 0.10
+		}
+	}
+
+	weight_modifier = {
+		base = 1000
+	}
+}

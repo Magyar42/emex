@@ -1,0 +1,29 @@
+@ap_genetic_opener_POINTS = 2
+@ap_genetic_finisher_POINTS = 2
+
+tr_genetics_adopt = {
+	possible = {
+		OR = {
+			AND = {
+				has_ascension_perk = ap_engineered_evolution
+				has_technology = tech_gene_tailoring
+			}
+			has_valid_civic = civic_hive_manipulators_of_life # EMEX
+			has_valid_civic = civic_emex_gene_corp # EMEX
+		}
+	}
+	on_enabled = {
+		hidden_effect = {
+			country_event = { id = utopia.2700 }
+		}
+	}
+	unlocks_agenda = agenda_genetic_pursuit
+	custom_tooltip = tr_genetics_adopt_modifier_desc
+	modifier = {
+		description_parameters = {
+			POINTS = @ap_genetic_opener_POINTS
+		}
+		BIOLOGICAL_species_trait_points_add = @ap_genetic_opener_POINTS
+	}
+	# Unlocks Clone Vats
+}

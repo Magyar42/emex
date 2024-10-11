@@ -1,0 +1,45 @@
+@minor_artifact_decision_cost = 100
+@minor_artifact_decision_duration = 3600
+@minor_artifact_ai_threshold = 200
+
+emex_artifact_research = {
+	resources = {
+		category = artifact_actions
+		cost = {
+			minor_artifacts = 250
+		}
+	}
+
+	ai_weight = {
+		weight = 50
+		modifier = {
+			factor = 0
+			has_resource = { type = minor_artifacts amount < @minor_artifact_ai_threshold }
+		}
+	}
+
+	potential = {
+		OR = {
+			AND = {
+				has_valid_civic = civic_explorers
+				has_valid_civic = civic_antique_purveyors_ancrel
+			}
+			AND = {
+				has_valid_civic = civic_star_pioneers
+				has_valid_civic = civic_antique_appropriators_ancrel
+			}
+		}
+	}
+
+	effect = {
+		custom_tooltip = emex_pathfinders_effect_tt
+		hidden_effect = {
+			emex_pathfinders_effect = yes
+			add_modifier = {
+				modifier = "emex_artifact_research_cooldown"
+				days = 1800
+			}
+		}
+	}
+	allow = { NOT = { has_modifier = emex_artifact_research_cooldown } }
+}

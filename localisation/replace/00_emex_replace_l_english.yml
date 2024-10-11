@@ -1,0 +1,11 @@
+﻿l_english:
+ 
+ # Overwritten as background civics have a unique block tagging them as such
+ civic_eager_explorers_desc: "$emex_background_civic_tt$\n\nYearning for the stars, this civilization sped through several stages of development, reaching the age of galactic exploration far earlier than most."
+ civic_hive_stargazers_desc: "$emex_background_civic_tt$\n\nGazing with wonder at the night sky, this Hive has always yearned for exploration. In pursuit of this ambition, other forms of development were sidelined, and a small fleet of vessels capable of limited subspace travel was constructed."
+ civic_machine_exploration_protocol_desc: "$emex_background_civic_tt$\n\nThe foundation of this Machine Intelligence's central programming is the drive to catalog exoplanetary life. In pursuit of this directive, it has dedicated much of its resources to crafting a small fleet of vessels capable of limited subspace travel."
+ civic_privatized_exploration_desc: "$emex_background_civic_tt$\n\nFor years, this civilization was told that the hyperdrive was almost finished. Patiently they waited, yet all the while, the subsidiary in charge of the project was quietly diverting the funds into their own, private accounts. When the fraud was finally revealed, the Corporation hastened to provide experimental, exploratory vessels."
+ civic_shadow_council_desc: "Unbeknownst to its own citizens, this society is actually manipulated from behind the scenes by a secretive shadow council. Appearances must be kept, but the tyranny of the majority should also be guarded against. After all, what if the fools vote for the wrong candidate? $emex_synergy_2b_effects$"
+ 
+ mod_leaders_unity_upkeep_mult: "Leader £energy£ Energy Credits Upkeep" # Overwritten as default text made it seem like it applied to all leaders, even if just applied to one leader
+ mod_planet_metallurgists_upkeep_mult: "Upkeep of £job_foundry£ Metallurgists" # Overwritten to add job icon

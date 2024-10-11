@@ -1,0 +1,74 @@
+
+#Root = species
+#This = country
+can_release_vassal_from_species = {
+	root = {
+		is_sapient = yes
+		NOR = {
+			# EMEX Start
+			AND = {
+				has_trait = trait_machine_unit
+				NOT = {
+					prev.this = { has_valid_civic = civic_machine_mighty_processors }
+				}
+			}
+			# EMEX End
+			AND = {
+				has_trait = trait_hive_mind
+				NOR = {
+					prev.this = { has_origin = origin_progenitor_hive }
+					prev.this = { has_valid_civic = civic_hive_semi_autonomous_drones } # EMEX
+				}
+			}
+			AND = {
+				NOT = { has_trait = trait_hive_mind }
+				prev.this = { has_authority = auth_hive_mind }
+			}
+			has_trait = trait_mechanical
+			can_think = no
+			has_trait = trait_clone_soldier_infertile
+			has_trait = trait_clone_soldier_infertile_full_potential
+		}
+	}
+}
+
+#This, root = country
+can_add_negative_traits_organic = {
+	has_utopia = yes
+	OR = {
+		has_tradition = tr_genetics_resequencing
+		has_tradition = tr_cybernetics_integrated_anatomy
+		has_tradition = tr_cybernetics_assimilator_integrated_anatomy
+		# EMEX begin
+		AND = {
+			has_valid_civic = civic_emex_gene_cult
+			has_valid_civic = civic_emex_eugenics_program
+		}
+		# EMEX end
+	}
+}
+
+#This, root = country
+can_remove_positive_traits_organic = {
+	OR = {
+		AND = {
+			has_utopia = yes
+			OR = {
+				has_tradition = tr_genetics_resequencing
+				has_tradition = tr_cybernetics_integrated_anatomy
+				has_tradition = tr_cybernetics_assimilator_integrated_anatomy
+				# EMEX begin
+				AND = {
+					has_valid_civic = civic_emex_gene_cult
+					has_valid_civic = civic_emex_eugenics_program
+				}
+				# EMEX end
+			}
+		}
+		AND = {
+			has_toxoids = yes
+			has_origin = origin_overtuned
+		}
+		has_technology = tech_epigenetic_triggers
+	}
+}

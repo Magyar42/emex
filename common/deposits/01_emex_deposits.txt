@@ -1,0 +1,998 @@
+
+d_emex_sw_machine_wasteland = {
+	
+	time = 180
+	icon = "d_organic_landfill"
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+	potential = { always = no }
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 2000
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	on_cleared = {
+		hidden_effect = {
+			if = {
+				limit = {
+					any_owned_pop = {
+						is_robot_pop = yes
+					}
+				}
+				random_owned_pop = {
+					limit = {
+						is_robot_pop = yes
+					}
+					root = {
+						create_pop = {
+							species = prev
+						}
+					}
+				}
+			}
+		}
+		custom_tooltip = d_decrepit_dwellings_custom_tooltip
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = -1
+	}
+}
+
+d_emex_sw_ancient_battlefield = {
+	
+	time = 360
+	icon = "d_nanite_corpses"
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+	potential = { always = no }
+	resources = {
+		category = deposit_blockers
+		cost = {
+			alloys = 1000
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	on_cleared = {
+		owner = {
+			random_list = {
+				10 = {
+					add_resource = { minerals = 500 }
+				}
+				10 = {
+					add_resource = { minerals = 750 }
+				}
+				10 = {
+					add_resource = { minerals = 1000 }
+				}
+			}
+		}
+	}
+	
+	planet_modifier = {
+		pop_growth_speed = -0.02
+	}
+}
+
+d_extraction_crater = {
+	icon = d_prospectorium_strip_mine
+
+	time = 360
+
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+
+	potential = { always = no }
+	can_be_cleared = {
+		custom_tooltip = {
+			fail_text = requires_actor_not_destructive_programming
+			exists = owner
+			owner = {
+				NOT = { has_valid_civic = civic_machine_destructive_programming }
+			}
+		}
+	}
+
+	planet_modifier = {
+		planet_max_districts_add = -1
+	}
+
+	drop_weight = {
+		weight = 0
+	}
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 1000
+		}
+	}
+
+	ai_weight = {
+		weight = 2
+	}
+}
+
+d_environmental_caretaking = {
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	
+	icon = "d_titanic_life_blocker"
+	
+	resources = {
+		category = planet_deposits
+		produces = {
+			society_research = 6
+		}
+	}
+	
+	planet_modifier = {
+		planet_non_artificial_max_districts_add = -1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_crystalline_cache = {
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	
+	icon = "d_buried_lithoids"
+	
+	produces = {
+		rare_crystals = 1.5
+	}
+	
+	planet_modifier = {
+		district_generator_max = 1
+		job_crystalline_technician_per_pop = 0.05 # 1 per 20
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+# Anarcho-Tyranny #
+
+d_anty_colony_deposit = {
+	icon = "d_station_cargo"
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	potential = { always = no }
+	planet_modifier = {
+		job_warlord_per_pop = 0.10 #1 per 10 pops
+		job_loyal_criminal_per_crime = 0.05 #1 per 20 crime
+		planet_crime_add = 10
+	}
+	drop_weight = {
+		weight = 0
+	}
+	
+}
+
+# Sovereign Nations #
+
+d_sn_global_superpower = {
+
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+
+	potential = { always = no }
+
+	planet_modifier = {
+		planet_stability_add = 2
+		pop_happiness = 0.03
+		pop_growth_speed = 0.01
+	}
+	drop_weight = {
+		weight = 0
+	}
+}
+d_sn_cooperative_nation = {
+
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+
+	potential = { always = no }
+
+	planet_modifier = {
+		pop_citizen_happiness = 0.02
+		planet_max_districts_add = 1
+	}
+	drop_weight = {
+		weight = 0
+	}
+}
+d_sn_threatening_state = {
+	time = 150
+
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+
+	can_be_cleared = {
+		custom_tooltip = {
+			fail_text = has_sn_decision_active
+			planet = {
+				has_modifier = sn_dealing_with_nation
+			}
+		}
+	}
+
+	on_cleared = {
+		planet_event = { id = emex_civic.32 }
+		set_timed_planet_flag = {
+			flag = threatening_state_dealt
+			days = 100
+		}
+	}
+
+	potential = { always = no }
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			influence = 75
+			energy = 100
+		}
+	}
+
+	planet_modifier = {
+		planet_stability_add = -2
+		planet_max_districts_add = -2
+		planet_jobs_upkeep_mult = 0.01
+	}
+	drop_weight = {
+		weight = 0
+	}
+}
+d_sn_antagonistic_nation = {
+	time = 120
+
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+
+	can_be_cleared = {
+		custom_tooltip = {
+			fail_text = has_sn_decision_active
+			planet = {
+				has_modifier = sn_dealing_with_nation
+			}
+		}
+	}
+
+	on_cleared = {
+		planet_event = { id = emex_civic.32 }
+		set_timed_planet_flag = {
+			flag = antagonistic_state_dealt
+			days = 100
+		}
+	}
+
+	potential = { always = no }
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			influence = 50
+			energy = 100
+		}
+	}
+
+	planet_modifier = {
+		planet_stability_add = -1
+		pop_growth_speed = -0.03
+	}
+	drop_weight = {
+		weight = 0
+	}
+}
+d_sn_neutral_nation = {
+	time = 90
+
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+
+	can_be_cleared = {
+		custom_tooltip = {
+			fail_text = has_sn_decision_active
+			planet = {
+				has_modifier = sn_dealing_with_nation
+			}
+		}
+	}
+
+	on_cleared = {
+		planet_event = { id = emex_civic.32 }
+		set_timed_planet_flag = {
+			flag = neutral_state_dealt
+			days = 100
+		}
+	}
+
+	potential = { always = no }
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			influence = 25
+			energy = 100
+		}
+	}
+
+	planet_modifier = {
+		pop_growth_speed = 0.01
+	}
+	drop_weight = {
+		weight = 0
+	}
+}
+d_sn_occupied_zone = {
+
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+
+	potential = { always = no }
+
+	planet_modifier = {
+		pop_happiness = -0.02
+		planet_stability_add = 1
+	}
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_sn_global_superpower_h = {
+
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+
+	potential = { always = no }
+
+	planet_modifier = {
+		planet_stability_add = 2
+		planet_amenities_no_happiness_mult = 0.05
+		pop_growth_speed = 0.01
+	}
+	drop_weight = {
+		weight = 0
+	}
+}
+d_sn_cooperative_nation_h = {
+
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+
+	potential = { always = no }
+
+	planet_modifier = {
+		planet_amenities_no_happiness_mult = 0.05
+		planet_max_districts_add = 1
+	}
+	drop_weight = {
+		weight = 0
+	}
+}
+d_sn_threatening_state_h = {
+	time = 150
+
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+
+	can_be_cleared = {
+		custom_tooltip = {
+			fail_text = has_sn_decision_active
+			planet = {
+				has_modifier = sn_dealing_with_nation_h
+			}
+		}
+	}
+
+	on_cleared = {
+		planet_event = { id = emex_civic.42 }
+		set_timed_planet_flag = {
+			flag = threatening_state_dealt
+			days = 100
+		}
+	}
+
+	potential = { always = no }
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			influence = 75
+			energy = 100
+		}
+	}
+
+	planet_modifier = {
+		planet_stability_add = -2
+		planet_max_districts_add = -2
+		planet_jobs_upkeep_mult = 0.01
+	}
+	drop_weight = {
+		weight = 0
+	}
+}
+d_sn_antagonistic_nation_h = {
+	time = 120
+
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+
+	can_be_cleared = {
+		custom_tooltip = {
+			fail_text = has_sn_decision_active
+			planet = {
+				has_modifier = sn_dealing_with_nation_h
+			}
+		}
+	}
+
+	on_cleared = {
+		planet_event = { id = emex_civic.42 }
+		set_timed_planet_flag = {
+			flag = antagonistic_state_dealt
+			days = 100
+		}
+	}
+
+	potential = { always = no }
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			influence = 50
+			energy = 100
+		}
+	}
+
+	planet_modifier = {
+		planet_stability_add = -1
+		pop_growth_speed = -0.03
+	}
+	drop_weight = {
+		weight = 0
+	}
+}
+d_sn_neutral_nation_h = {
+	time = 90
+
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+
+	can_be_cleared = {
+		custom_tooltip = {
+			fail_text = has_sn_decision_active
+			planet = {
+				has_modifier = sn_dealing_with_nation_h
+			}
+		}
+	}
+
+	on_cleared = {
+		planet_event = { id = emex_civic.42 }
+		set_timed_planet_flag = {
+			flag = neutral_state_dealt
+			days = 100
+		}
+	}
+
+	potential = { always = no }
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			influence = 25
+			energy = 100
+		}
+	}
+
+	planet_modifier = {
+		pop_growth_speed = 0.01
+	}
+	drop_weight = {
+		weight = 0
+	}
+}
+d_sn_occupied_zone_h = {
+
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+
+	potential = { always = no }
+
+	planet_modifier = {
+		planet_amenities_no_happiness_mult = -0.05
+		planet_stability_add = 1
+	}
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_copo_cc_centre = {
+	icon = "d_monument_in_space"
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	potential = { always = no }
+	planet_modifier = {
+		planet_max_districts_add = 1
+		job_core_custodian_per_pop = 0.10 # 1 per 10
+	}
+	drop_weight = {
+		weight = 0
+	}
+	
+}
+
+d_emex_infectious_air = {
+	is_for_colonizable = yes
+	icon = "d_gaseous_eruption"
+	category = deposit_cat_rare
+	potential = { always = no }
+
+	planet_modifier = {
+		pop_environment_tolerance = -0.15
+		pop_growth_speed = -0.10
+	}
+}
+
+d_emex_subterranean_refuge_1 = {
+	icon = d_ancient_vault
+	time = 360
+
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+
+	potential = { always = no }
+
+	planet_modifier = {
+		planet_max_districts_add = -2
+	}
+
+	on_cleared = {
+		owner = {
+			add_resource = {
+				alloys = 2000
+			}
+		}
+		if = {
+			limit = {
+				any_owned_pop = {
+					is_gestalt = no
+					is_robot_pop = no
+				}
+			}
+			random_owned_pop = {
+				limit = {
+					is_gestalt = no
+					is_robot_pop = no
+				}
+				root = {
+					create_pop = {
+						species = prev
+					}
+				}
+			}
+		}
+		else = {
+			random_owned_pop = {
+				root = {
+					create_pop = {
+						species = prev
+					}
+				}
+			}
+		}
+	}
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 5000
+		}
+	}
+}
+
+d_emex_subterranean_refuge_2 = {
+	icon = d_station_junk
+	time = 360
+
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+
+	potential = { always = no }
+
+	planet_modifier = {
+		planet_max_districts_add = -2
+	}
+
+	country_modifier = {
+		country_base_exotic_gases_produces_add = 2
+	}
+
+	on_cleared = {
+		owner = {
+			add_resource = {
+				exotic_gases = 1000
+			}
+		}
+		while = {
+			count = 3
+			if = {
+				limit = {
+					any_owned_pop = {
+						is_gestalt = no
+						is_robot_pop = no
+					}
+				}
+				random_owned_pop = {
+					limit = {
+						is_gestalt = no
+						is_robot_pop = no
+					}
+					root = {
+						create_pop = {
+							species = prev
+						}
+					}
+				}
+			}
+			else = {
+				random_owned_pop = {
+					root = {
+						create_pop = {
+							species = prev
+						}
+					}
+				}
+			}
+		}
+	}
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 5000
+		}
+	}
+	prerequisites = { "tech_emex_deep_core_excavation" }
+}
+
+d_emex_contaminated_dwellings = {
+	icon = d_rotten_soil_blocker
+	time = 180
+
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+
+	potential = { always = no }
+
+	planet_modifier = {
+		planet_housing_add = -4
+	}
+
+	on_cleared = {
+		add_district = district_city
+	}
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			minerals = 4000
+		}
+	}
+}
+
+d_emex_disease_laboratories = {
+	icon = "d_building_complex"
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	potential = { always = no }
+
+	planet_modifier = {
+		planet_stability_add = 5
+	}
+
+	country_modifier = {
+		category_biology_research_speed_mult = 0.20
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_emex_seeder_workshops = {
+	icon = "d_quarantine_zone"
+	is_for_colonizable = yes
+	category = deposit_cat_rare
+	potential = { always = no }
+
+	planet_modifier = {
+		job_brain_drone_per_pop = 0.10
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_emex_derelict_camps = {
+	icon = d_ruins_small
+	time = 180
+
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+
+	potential = { always = no }
+
+	planet_modifier = {
+		planet_housing_add = -2
+	}
+
+	on_cleared = {
+		random_owned_pop = {
+			root = {
+				create_pop = {
+					species = prev
+				}
+			}
+		}
+	}
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			minerals = 2000
+		}
+	}
+}
+
+d_emex_charred_fields = {
+	icon = d_lichen_fields
+	time = 180
+
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+
+	potential = { always = no }
+
+	on_cleared = {
+		owner = {
+			add_resource = {
+				food = 2500
+			}
+		}
+	}
+
+	blocker_swap_types = {
+		d_emex_luscious_fields
+	}
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 5000
+		}
+	}
+}
+
+d_emex_lost_remains = {
+	icon = d_broken_spire
+	time = 90
+
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+
+	potential = { always = no }
+
+	planet_modifier = {
+		planet_max_districts_add = -2
+	}
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			minerals = 750
+		}
+	}
+}
+
+d_emex_luscious_fields = {
+	icon = d_green_hills
+	category = deposit_cat_rare
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+
+	planet_modifier = {
+		district_farming_max = 2
+		job_agri_drone_per_pop = 0.05
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		district_farming_max = 2
+		job_agri_drone_per_pop = 0.05
+		mult = value:district_amount_mastery_of_nature
+	}
+
+	potential = { always = no }
+}
+
+d_emex_cultivating_colony_start = {
+	icon = d_green_hills
+	category = deposit_cat_rare
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+
+	planet_modifier = {
+		district_farming_max = 8
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		district_farming_max = 8
+		mult = value:district_amount_mastery_of_nature
+	}
+
+	potential = { always = no }
+}
+
+d_emex_fracking_colony_start = {
+	icon = d_dust_caverns
+	category = deposit_cat_rare
+	is_for_colonizable = yes
+	use_for_min_max_adjustments = yes
+
+	planet_modifier = {
+		district_mining_max = 8
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			always = yes
+		}
+		district_mining_max = 8
+		mult = value:district_amount_mastery_of_nature
+	}
+
+	potential = { always = no }
+}
+
+d_emex_arcane_assembly_lines = {
+	icon = d_nanite_corpses
+	time = 180
+
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+
+	potential = { always = no }
+
+	planet_modifier = {
+		planet_max_districts_add = -2
+	}
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			minerals = 750
+		}
+	}
+
+	on_cleared = {
+		hidden_effect = {
+			if = {
+				limit = {
+					any_owned_pop = {
+						is_robot_pop = yes
+					}
+				}
+				random_owned_pop = {
+					limit = {
+						is_robot_pop = yes
+					}
+					root = {
+						create_pop = {
+							species = prev
+						}
+					}
+				}
+			}
+		}
+		custom_tooltip = d_decrepit_dwellings_custom_tooltip
+	}
+}
+
+d_emex_mysterious_vaults = {
+	icon = d_bunker_door
+	time = 180
+
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+
+	potential = { always = no }
+
+	planet_modifier = {
+	}
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 1000
+		}
+	}
+
+	on_cleared = {
+		random_list = {
+			25 = {
+				add_resource = {
+					volatile_motes = 2000
+				}
+			}
+			25 = {
+				add_resource = {
+					exotic_gases = 2000
+				}
+			}
+			25 = {
+				add_resource = {
+					rare_crystals = 2000
+				}
+			}
+			25 = {
+				add_resource = {
+					alloys = 2000
+				}
+			}
+		}
+	}
+}
+
+d_emex_decrepit_generators = {
+	icon = d_reactor
+	time = 360
+
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+
+	potential = { always = no }
+
+	on_cleared = {
+		owner = {
+			add_resource = {
+				energy = 2500
+			}
+		}
+	}
+
+	blocker_swap_types = {
+		d_betharian_deposit
+	}
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			minerals = 4000
+		}
+	}
+}

@@ -1,0 +1,221 @@
+namespace = emex_origin2
+
+# Set Up
+event = {
+	id = emex_origin2.0
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		every_playable_country = {
+			limit = { has_origin = origin_emex_seeded_evolution }
+			country_event = { id = emex_origin2.1 }
+		}
+	}
+}
+
+# Set Up
+country_event = {
+	id = emex_origin2.1
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = { has_country_flag = emex_seeded_evolution_set_up_complete }
+	}
+	
+	immediate = {
+		capital_scope = { 
+			# add_deposit = d_emex_luscious_fields
+			add_deposit = d_emex_lost_remains
+			add_deposit = d_emex_lost_remains
+			add_deposit = d_emex_charred_fields
+			add_deposit = d_emex_derelict_camps
+			add_deposit = d_emex_seeder_workshops
+		}
+		begin_event_chain = {
+			event_chain = emex_seeded_annals
+		}
+		country_event = {
+			id = emex_origin2.5 # Gatekeeper event for triggering event chains
+			days = 5
+		}
+		set_country_flag = emex_seeded_evolution_set_up_complete
+	}
+}
+
+# Event Chain Gatekeeper
+country_event = {
+	id = emex_origin2.5
+	title = "emex_origin2.5.name"
+	desc = "emex_origin2.5.desc"
+	picture = GFX_evt_star_chart
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_origin = origin_emex_seeded_evolution
+		NOT = {
+			has_country_flag = emex_seeded_ongoing_branch
+		}
+	}
+	# todo: make the special projects appear on specific planets in solar_system_initializers
+	immediate = {
+		while = {
+			count = 3
+			random_list = {
+				10 = {
+					modifier = {
+						factor = 0
+						OR = {
+							has_country_flag = emex_seeded_chain1_done
+							has_country_flag = emex_seeded_chain1_available
+						}
+					}
+					set_country_flag = emex_seeded_chain1_available
+				}
+				10 = {
+					modifier = {
+						factor = 0
+						OR = {
+							has_country_flag = emex_seeded_chain2_done
+							has_country_flag = emex_seeded_chain2_available
+						}
+					}
+					set_country_flag = emex_seeded_chain2_available
+				}
+				10 = {
+					modifier = {
+						factor = 0
+						OR = {
+							has_country_flag = emex_seeded_chain3_done
+							has_country_flag = emex_seeded_chain3_available
+						}
+					}
+					set_country_flag = emex_seeded_chain3_available
+				}
+				10 = {
+					modifier = {
+						factor = 0
+						OR = {
+							has_country_flag = emex_seeded_chain4_done
+							has_country_flag = emex_seeded_chain4_available
+						}
+					}
+					set_country_flag = emex_seeded_chain4_available
+				}
+				10 = {
+					modifier = {
+						factor = 0
+						OR = {
+							has_country_flag = emex_seeded_chain5_done
+							has_country_flag = emex_seeded_chain5_available
+						}
+					}
+					set_country_flag = emex_seeded_chain5_available
+				}
+				10 = {
+					modifier = {
+						factor = 0
+						OR = {
+							has_country_flag = emex_seeded_chain6_done
+							has_country_flag = emex_seeded_chain6_available
+						}
+					}
+					set_country_flag = emex_seeded_chain6_available
+				}
+			}
+		}
+	}
+
+	after = {
+		set_country_flag = emex_seeded_ongoing_branch # todo: ensure to remove at end of each event chain
+	}
+
+	option = {
+		name = "emex_origin2.5.1"
+		trigger = {
+			has_country_flag = emex_seeded_chain1_available
+		}
+		capital_scope = {
+			enable_special_project = {
+				name = EMEX_SEEDED_PATH1
+				location = THIS
+			}
+		}
+		set_country_flag = emex_seeded_ongoing_branch_1
+		remove_country_flag = emex_seeded_chain1_available
+	}
+	option = {
+		name = "emex_origin2.5.2"
+		trigger = {
+			has_country_flag = emex_seeded_chain2_available
+		}
+		capital_scope = {
+			enable_special_project = {
+				name = EMEX_SEEDED_PATH2
+				location = THIS
+			}
+		}
+		set_country_flag = emex_seeded_ongoing_branch_2
+		remove_country_flag = emex_seeded_chain2_available
+	}
+	option = {
+		name = "emex_origin2.5.3"
+		trigger = {
+			has_country_flag = emex_seeded_chain3_available
+		}
+		capital_scope = {
+			enable_special_project = {
+				name = EMEX_SEEDED_PATH3
+				location = THIS
+			}
+		}
+		set_country_flag = emex_seeded_ongoing_branch_3
+		remove_country_flag = emex_seeded_chain3_available
+	}
+	option = {
+		name = "emex_origin2.5.4"
+		trigger = {
+			has_country_flag = emex_seeded_chain4_available
+		}
+		capital_scope = {
+			enable_special_project = {
+				name = EMEX_SEEDED_PATH4
+				location = THIS
+			}
+		}
+		set_country_flag = emex_seeded_ongoing_branch_4
+		remove_country_flag = emex_seeded_chain4_available
+	}
+	option = {
+		name = "emex_origin2.5.5"
+		trigger = {
+			has_country_flag = emex_seeded_chain5_available
+		}
+		capital_scope = {
+			enable_special_project = {
+				name = EMEX_SEEDED_PATH5
+				location = THIS
+			}
+		}
+		set_country_flag = emex_seeded_ongoing_branch_5
+		remove_country_flag = emex_seeded_chain5_available
+	}
+	option = {
+		name = "emex_origin2.5.6"
+		trigger = {
+			has_country_flag = emex_seeded_chain6_available
+		}
+		capital_scope = {
+			enable_special_project = {
+				name = EMEX_SEEDED_PATH6
+				location = THIS
+			}
+		}
+		set_country_flag = emex_seeded_ongoing_branch_6
+		remove_country_flag = emex_seeded_chain6_available
+	}
+}
