@@ -983,36 +983,44 @@ emex_seeded_home_system = {
 		initializer = "neighbor_t1_first_colony"
 	}
 
-	neighbor_system = {
-		hyperlane_jumps = { min = 2 max = 3 }
-		initializer = "emex_seeded_path1_system"
-	}
+	## SPAWNED IN THRU EVENT
+	# neighbor_system = { 
+	# 	hyperlane_jumps = { min = 2 max = 3 }
+	# 	initializer = "emex_seeded_path1_system"
+	# }
+	
 	## Project appears in random system instead
 	# neighbor_system = {
 	# 	hyperlane_jumps = { min = x max = y }
 	# 	initializer = "emex_seeded_path2_system"
 	# }
-	neighbor_system = {
-		hyperlane_jumps = { min = 1 max = 3 }
-		initializer = "emex_seeded_path3_system"
-	}
+
+	## SPAWNED IN THRU EVENT
+	# neighbor_system = {
+	# 	hyperlane_jumps = { min = 1 max = 3 }
+	# 	initializer = "emex_seeded_path3_system"
+	# }
+
 	## Project appears in random system instead
 	# neighbor_system = {
 	# 	hyperlane_jumps = { min = x max = y }
 	# 	initializer = "emex_seeded_path4_system"
 	# }
+
 	## Project appears in random system instead
 	# neighbor_system = {
 	# 	hyperlane_jumps = { min = x max = y }
 	# 	initializer = "emex_seeded_path5_system"
 	# }
-	neighbor_system = {
-		hyperlane_jumps = { min = 3 max = 5 }
-		initializer = "emex_seeded_path6_system"
-	}
+
+	## SPAWNED IN THRU EVENT
+	# neighbor_system = {
+	# 	hyperlane_jumps = { min = 3 max = 5 }
+	# 	initializer = "emex_seeded_path6_system"
+	# }
 }
 
-# SP 1: World of Grey
+# PATH 1: World of Grey
 # todo: add debris?
 emex_seeded_path1_system = {
 	class = "rl_starting_stars"
@@ -1060,7 +1068,8 @@ emex_seeded_path1_system = {
 		orbit_distance = 20
 		orbit_angle = { min = 90 max = 270 }
 		change_orbit = @base_moon_distance
-		size = { min = 16 max = 24 }
+		size = { min = 20 max = 24 }
+		has_ring = yes
 		deposit_blockers = none
 		modifiers = none
 		init_effect = {

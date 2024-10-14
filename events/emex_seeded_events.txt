@@ -46,7 +46,7 @@ country_event = {
 	}
 }
 
-# Event Chain Gatekeeper
+# Event Chain Gatekeeper - FIRST ONE ONLY
 country_event = {
 	id = emex_origin2.5
 	title = "emex_origin2.5.name"
@@ -134,15 +134,37 @@ country_event = {
 		set_country_flag = emex_seeded_ongoing_branch # todo: ensure to remove at end of each event chain
 	}
 
+	# NOTE: all systems involved are SPAWNED in when the path is chosen; this is so that several "versions" of each
+	# system can be present if several empires have the origin, so that the systems and which empire they were made
+	# for can be tracked, ensuring empires ONLY need the systems created for them
+
 	option = {
 		name = "emex_origin2.5.1"
 		trigger = {
 			has_country_flag = emex_seeded_chain1_available
 		}
-		capital_scope = {
-			enable_special_project = {
-				name = EMEX_SEEDED_PATH1
-				location = THIS
+		# Spawn related system
+		capital_scope.solar_system = {
+			closest_system = {
+				min_steps = 2
+				max_steps = 3
+				spawn_system = {
+					initializer = emex_seeded_path1_system
+				}
+			}
+		}
+		# Create special project
+		last_created_system = {
+			random_system_planet = {
+				limit = {
+					has_planet_flag = emex_seeder_sp1_planet
+				}
+				set_planet_flag = emex_seeder_sp1_planet@root
+				save_global_event_target_as = emex_seeder_sp1_planet@root
+				enable_special_project = {
+					name = EMEX_SEEDED_PATH1
+					location = THIS
+				}
 			}
 		}
 		set_country_flag = emex_seeded_ongoing_branch_1
@@ -217,5 +239,234 @@ country_event = {
 		}
 		set_country_flag = emex_seeded_ongoing_branch_6
 		remove_country_flag = emex_seeded_chain6_available
+	}
+}
+
+## Path 1 - World of Grey
+
+# Start SP Complete
+country_event = {
+	id = emex_origin2.100
+	title = "emex_origin2.100.name"
+	desc = "emex_origin2.100.desc"
+	picture = GFX_evt_gray_goo
+	location = event_target:emex_seeder_sp1_planet@root
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_origin = origin_emex_seeded_evolution
+	}
+
+	immediate = {
+		# Use for localisation
+		event_target:emex_seeder_sp1_planet@root = {
+			save_event_target_as = emex_seeder_sp1_planet_eventname
+		}
+	}
+
+	after = {
+		clear_global_event_target
+	}
+	
+	option = {
+		name = "emex_origin2.100.1"
+		add_resource = {
+			energy = -750
+		}
+		hidden_effect = {
+			set_country_flag = emex_seeder_sp1_pathA
+			country_event = {
+				id = emex_origin2.101
+				days = 90
+				random = 30
+			}
+		}
+	}
+	option = {
+		name = "emex_origin2.100.2"
+		allow = {
+			has_resource = { type = minerals amount >= 2000}
+		}
+		add_resource = {
+			minerals = -2000
+		}
+		add_monthly_resource_mult = {
+			resource = unity
+			value = 3
+			min = 500
+			max = 10000
+		}
+		hidden_effect = {
+			set_country_flag = emex_seeder_sp1_pathB
+			country_event = {
+				id = emex_origin2.101
+				days = 60
+				random = 30
+			}
+		}
+	}
+}
+
+# Nanites Removed
+country_event = {
+	id = emex_origin2.101
+	title = "emex_origin2.101.name"
+	desc = {
+		trigger = {
+			has_country_flag = emex_seeder_sp1_pathA
+		}
+		text = "emex_origin2.101.A.desc"
+	}
+	desc = {
+		trigger = {
+			has_country_flag = emex_seeder_sp1_pathB
+		}
+		text = "emex_origin2.101.B.desc"
+	}
+	picture = GFX_evt_gray_gooed_planet
+	location = event_target:emex_seeder_sp1_planet@root
+	
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_emex_seeded_evolution
+	}
+
+	immediate = {
+		event_target:emex_seeder_sp1_planet@root = {
+			change_pc = pc_barren_cold
+			reroll_deposits = yes
+			add_deposit = d_alloys_2
+		}
+	}
+	
+	option = {
+		name = "emex_origin2.101.1"
+		event_target:emex_seeder_sp1_planet@root = {
+			enable_special_project = {
+				name = EMEX_SEEDED_PATH1_part2
+				location = THIS
+			}
+		}
+	}
+}
+
+# Surface Scanned
+country_event = {
+	id = emex_origin2.102
+	title = "emex_origin2.102.name"
+	desc = "emex_origin2.102.desc"
+	picture = GFX_evt_storm_formation
+	
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_emex_seeded_evolution
+	}
+
+	immediate = {
+	}
+	
+	option = {
+		name = "emex_origin2.102.1"
+		hidden_effect = {
+			set_country_flag = emex_seeder_sp1_part2_pathA
+			country_event = {
+				id = emex_origin2.103
+				days = 120
+				random = 30
+			}
+		}
+	}
+	option = {
+		name = "emex_origin2.102.2"
+		hidden_effect = {
+			set_country_flag = emex_seeder_sp1_part2_pathB
+			country_event = {
+				id = emex_origin2.103
+				days = 120
+				random = 30
+			}
+		}
+	}
+}
+
+# End Event
+country_event = {
+	id = emex_origin2.103
+	title = "emex_origin2.103.name"
+	desc = {
+		trigger = {
+			has_country_flag = emex_seeder_sp1_part2_pathA
+		}
+		text = "emex_origin2.103.A.desc"
+	}
+	desc = {
+		trigger = {
+			has_country_flag = emex_seeder_sp1_part2_pathB
+		}
+		text = "emex_origin2.103.B.desc"
+	}
+	picture = GFX_evt_derelict_interior
+	
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_emex_seeded_evolution
+	}
+
+	immediate = {
+	}
+	
+	option = {
+		name = "emex_origin2.103.1"
+		if = {
+			limit = {
+				has_country_flag = emex_seeder_sp1_part2_pathA
+			}
+			add_monthly_resource_mult = {
+				resource = alloys
+				value = 5
+				min = 2000
+				max = 8000
+			}
+			add_modifier = {
+				modifier = emex_seeder_sp1_outcomeA
+				days = 3600
+			}
+		}
+		else = {
+			add_monthly_resource_mult = {
+				resource = physics_research
+				value = 12
+				min = 5000
+			}
+			add_resource = {
+				nanites = 2000
+			}
+			add_tech_progress = {
+				tech = tech_nanite_transmutation
+				progress = 0.4
+			}
+		}
+		event_target:emex_seeder_sp1_planet@root = {
+			add_deposit = d_nanites_deposit_2
+		}
+
+		clear_global_event_target = emex_seeder_sp1_planet@root
+		remove_country_flag = emex_seeded_ongoing_branch
+		set_country_flag = emex_seeded_chain1_done
+		add_event_chain_counter = {
+			event_chain = emex_seeded_annals
+			counter = emex_seeded_knowledge
+			amount = 1
+		}
+		# todo: reenable
+		# country_event = {
+		# 	id = emex_origin2.10 # Main Gatekeeper
+		# 	days = 1800
+		# 	random = 1800
+		# }
 	}
 }

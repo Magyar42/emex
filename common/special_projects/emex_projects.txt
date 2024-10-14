@@ -160,6 +160,7 @@ special_project = {
 	days_to_research = 180
 	picture = GFX_evt_gray_goo
 	icon = "gfx/interface/icons/situation_log/situation_log_planet.dds"
+	location = yes
 
 	same_option_group_as = { EMEX_SEEDED_PATH2 }
 
@@ -171,7 +172,30 @@ special_project = {
 	
 	on_success = {
 		owner = {
-			# todo
+			country_event = { id = emex_origin2.100 }
+		}
+	}
+}
+
+special_project = {
+	key = "EMEX_SEEDED_PATH1_part2"
+	tech_department = engineering_technology
+	cost = 0
+	days_to_research = 360
+	picture = GFX_evt_relic_world_street
+	icon = "gfx/interface/icons/situation_log/situation_log_planet.dds"
+	location = yes
+
+	event_scope = ship_event
+
+	requirements = {
+		shipclass_science_ship = 1
+		shipclass_constructor = 1
+	}
+	
+	on_success = {
+		owner = {
+			country_event = { id = emex_origin2.102 }
 		}
 	}
 }

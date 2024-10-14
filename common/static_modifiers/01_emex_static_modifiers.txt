@@ -619,3 +619,10 @@ emex_traces_of_individuality = {
 	planet_pops_robotics_upkeep_mult = -0.10
 	building_time_mult = 0.40
 }
+
+emex_seeder_sp1_outcomeA = {
+	planet_researchers_physics_research_produces_mult = 0.20
+	planet_researchers_society_research_produces_mult = 0.10
+	planet_researchers_engineering_research_produces_mult = 0.10
+	icon = "gfx/interface/icons/modifiers/mod_physics_research_upkeep_mult.dds"
+}
