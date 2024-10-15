@@ -162,8 +162,6 @@ special_project = {
 	icon = "gfx/interface/icons/situation_log/situation_log_planet.dds"
 	location = yes
 
-	same_option_group_as = { EMEX_SEEDED_PATH2 }
-
 	event_scope = ship_event
 
 	requirements = {
@@ -206,8 +204,6 @@ special_project = {
 	picture = GFX_evt_gas_giant
 	icon = "gfx/interface/icons/situation_log/situation_log_planet.dds"
 
-	same_option_group_as = { EMEX_SEEDED_PATH1 }
-
 	event_scope = ship_event
 
 	requirements = {
@@ -216,9 +212,7 @@ special_project = {
 	}
 	
 	on_success = {
-		owner = {
-			# todo
-		}
+		ship_event = { id = emex_origin2.200 }
 	}
 }
 
@@ -229,8 +223,6 @@ special_project = {
 	days_to_research = 180
 	picture = GFX_evt_space_debris
 	icon = "gfx/interface/icons/situation_log/situation_log_planet.dds"
-
-	same_option_group_as = { EMEX_SEEDED_PATH1 }
 
 	event_scope = ship_event
 
@@ -254,8 +246,6 @@ special_project = {
 	picture = GFX_evt_drifting_gateway
 	icon = "gfx/interface/icons/situation_log/situation_log_planet.dds"
 
-	same_option_group_as = { EMEX_SEEDED_PATH1 }
-
 	event_scope = ship_event
 
 	requirements = {
@@ -278,8 +268,6 @@ special_project = {
 	picture = GFX_evt_engineering_bay
 	icon = "gfx/interface/icons/situation_log/situation_log_planet.dds"
 
-	same_option_group_as = { EMEX_SEEDED_PATH1 }
-
 	event_scope = ship_event
 
 	requirements = {
@@ -301,8 +289,6 @@ special_project = {
 	days_to_research = 180
 	picture = GFX_evt_necromancy
 	icon = "gfx/interface/icons/situation_log/situation_log_planet.dds"
-
-	same_option_group_as = { EMEX_SEEDED_PATH1 }
 
 	event_scope = ship_event
 

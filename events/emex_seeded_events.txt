@@ -174,10 +174,25 @@ country_event = {
 		trigger = {
 			has_country_flag = emex_seeded_chain2_available
 		}
-		capital_scope = {
-			enable_special_project = {
-				name = EMEX_SEEDED_PATH2
-				location = THIS
+		capital_scope.solar_system = {
+			closest_system = {
+				min_steps = 3
+				limit = {
+					any_system_planet = {
+						is_planet_class = pc_gas_giant
+					}
+				}
+				random_system_planet = {
+					limit = {
+						is_planet_class = pc_gas_giant
+					}
+					set_planet_flag = emex_seeder_sp2_planet
+					set_planet_flag = emex_seeder_sp2_planet@root
+					enable_special_project = {
+						name = EMEX_SEEDED_PATH2
+						location = THIS
+					}
+				}
 			}
 		}
 		set_country_flag = emex_seeded_ongoing_branch_2
@@ -309,7 +324,6 @@ ship_event = {
 		}
 	}
 }
-
 # Nanites Removed
 country_event = {
 	id = emex_origin2.101
@@ -353,7 +367,6 @@ country_event = {
 		}
 	}
 }
-
 # Surface Scanned
 country_event = {
 	id = emex_origin2.102
@@ -394,7 +407,6 @@ country_event = {
 		}
 	}
 }
-
 # End Event
 country_event = {
 	id = emex_origin2.103
@@ -458,9 +470,235 @@ country_event = {
 			add_deposit = d_nanites_deposit_2
 		}
 
-		clear_global_event_target = emex_seeder_sp1_planet@root
 		remove_country_flag = emex_seeded_ongoing_branch
 		set_country_flag = emex_seeded_chain1_done
+		add_event_chain_counter = {
+			event_chain = emex_seeded_annals
+			counter = emex_seeded_knowledge
+			amount = 1
+		}
+		# todo: reenable
+		# country_event = {
+		# 	id = emex_origin2.10 # Main Gatekeeper
+		# 	days = 1800
+		# 	random = 1800
+		# }
+	}
+}
+
+## Path 2 - Familiar Signal
+# Start SP Complete
+ship_event = {
+	id = emex_origin2.200
+	title = "emex_origin2.200.name"
+	desc = "emex_origin2.200.desc"
+	picture = GFX_evt_gas_giant
+	location = fromfrom
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		owner = { has_origin = origin_emex_seeded_evolution }
+	}
+
+	immediate = {
+		fromfrom = {
+			save_event_target_as = emex_seeder_sp2_target
+		}
+	}
+	
+	option = {
+		name = "emex_origin2.200.1"
+		fromfrom = {
+			create_archaeological_site = emex_seeder_sp2_digsite
+		}
+	}
+}
+# Digsite - I
+fleet_event = { 
+	id = emex_origin2.201
+	title = "emex_origin2.201.name"
+	desc = emex_origin2.201.desc
+	picture = GFX_evt_mining_station
+	location = from
+
+	archaeology = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		from = { set_site_progress_locked = yes }
+	}
+
+	after = {
+		from = { set_site_progress_locked = no }
+	}
+
+	option = {
+		name = emex_origin2.201.1 # Path A
+		small_artifact_reward = yes
+		owner = {
+			set_country_flag = emex_seeder_sp2_pathA
+		}
+	}
+	option = {
+		name = emex_origin2.201.2 # Path B
+		small_artifact_reward = yes
+		add_stage_clues = -2
+		owner = {
+			set_country_flag = emex_seeder_sp2_pathB
+		}
+	}
+}
+# Digsite - II
+fleet_event = { 
+	id = emex_origin2.202
+	title = "emex_origin2.202.name"
+	desc = {
+		trigger = {
+			has_country_flag = emex_seeder_sp2_pathA
+		}
+		text = "emex_origin2.202.A.desc"
+	}
+	desc = {
+		trigger = {
+			has_country_flag = emex_seeder_sp2_pathB
+		}
+		text = "emex_origin2.202.B.desc"
+	}
+	picture = {
+		trigger = {
+			has_country_flag = emex_seeder_sp2_pathA
+		}
+		picture = GFX_evt_cosmic_storms_calibration
+	}
+	picture = {
+		trigger = {
+			has_country_flag = emex_seeder_sp2_pathB
+		}
+		picture = GFX_evt_sabotaged_ship
+	}
+	location = from
+
+	archaeology = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		from = { set_site_progress_locked = yes }
+	}
+
+	after = {
+		from = { set_site_progress_locked = no }
+	}
+
+	option = {
+		name = emex_origin2.202.1
+		trigger = {
+			owner = {
+				has_country_flag = emex_seeder_sp2_pathA
+			}
+		}
+		owner = {
+			add_resource = {
+				rare_crystals = 1000
+			}
+		}
+		large_artifact_reward = yes
+	}
+	option = {
+		name = emex_origin2.202.2
+		trigger = {
+			owner = {
+				has_country_flag = emex_seeder_sp2_pathB
+			}
+		}
+		owner = {
+			add_monthly_resource_mult = {
+				resource = alloys
+				value = 10
+				min = 1500
+				max = 5000
+			}
+			add_monthly_resource_mult = {
+				resource = minerals
+				value = 12
+				min = 3000
+				max = 7000
+			}
+			add_monthly_resource_mult = {
+				resource = society_research
+				value = @tier3researchreward
+				min = @tier3researchmin
+				max = @tier3researchmax
+			}
+		}
+	}
+}
+# Digsite - III
+fleet_event = { 
+	id = emex_origin2.203
+	title = "emex_origin2.203.name"
+	desc = emex_origin2.203.desc
+	picture = GFX_evt_clones
+	location = from
+
+	archaeology = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		from = { set_site_progress_locked = yes }
+	}
+
+	after = {
+		from = { set_site_progress_locked = no }
+	}
+
+	option = {
+		name = emex_origin2.203.1
+		small_artifact_reward = yes
+	}
+}
+# Digsite - IV
+fleet_event = { 
+	id = emex_origin2.204
+	title = "emex_origin2.204.name"
+	desc = emex_origin2.204.desc
+	picture = GFX_evt_rare_tech_cache
+	location = from
+
+	archaeology = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		from = { set_site_progress_locked = yes }
+	}
+
+	after = {
+		from = { set_site_progress_locked = no }
+	}
+
+	option = {
+		name = emex_origin2.204.1
+		small_artifact_reward = yes
+
+		event_target:emex_seeder_sp2_target = {
+			add_deposit = d_physics_4
+			add_deposit = d_society_4
+			add_deposit = d_engineering_4
+		}
+
+		add_monthly_resource_mult = {
+			resource = unity
+			value = @tier4unityreward
+			min = @tier4unitymin
+			max = @tier4unitymax
+		}
+
+		remove_country_flag = emex_seeded_ongoing_branch
+		set_country_flag = emex_seeded_chain2_done
 		add_event_chain_counter = {
 			event_chain = emex_seeded_annals
 			counter = emex_seeded_knowledge

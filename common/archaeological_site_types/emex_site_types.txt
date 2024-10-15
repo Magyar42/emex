@@ -1,4 +1,85 @@
-# Derelict Trade Hub
+# TMA Path B: Subspace Match
+tma_path_b_site = {
+	desc = "tma_path_b_site_desc"
+	picture = GFX_evt_desert_arch
+	stages = 3
+	max_instances = 1
+	allow = {
+		is_ship_class = shipclass_science_ship
+		exists = leader
+	}
+	visible = {
+		default_site_visible_trigger = yes
+	}
+	
+	stage = {
+		difficulty = 4
+		icon = GFX_archaeology_runes_C1
+		event = maai.136
+	}
+	stage = {
+		difficulty = 5
+		icon = GFX_archaeology_runes_C2
+		event = maai.137
+	}
+	stage = {
+		difficulty = 6
+		icon = GFX_archaeology_runes_C3
+		event = maai.138
+	}
+
+	on_roll_failed = {
+		from = {
+			standard_archaeological_site_on_roll_failed = { RANDOM_EVENTS = all_random_events }
+		}
+	}
+}
+
+# Seeded Evolution: Chain 2
+emex_seeder_sp2_digsite = {
+	desc = "emex_seeder_sp2_digsite_desc"
+	picture = GFX_evt_mercenary_fleet
+	stages = 4
+	allow = {
+		is_ship_class = shipclass_science_ship
+		exists = leader
+	}
+	visible = {
+		default_site_visible_trigger = yes
+	}
+	
+	stage = {
+		difficulty = 2
+		icon = GFX_archaeology_runes_C1
+		event = emex_origin2.201
+	}
+	stage = {
+		difficulty = 3
+		icon = GFX_archaeology_runes_C2
+		event = emex_origin2.202
+	}
+	stage = {
+		difficulty = 3
+		icon = GFX_archaeology_runes_C3
+		event = emex_origin2.203
+	}
+	stage = {
+		difficulty = 4
+		icon = GFX_archaeology_runes_C4
+		event = emex_origin2.204
+	}
+
+	on_roll_failed = {
+		from = {
+			standard_archaeological_site_on_roll_failed = { RANDOM_EVENTS = all_random_events }
+		}
+	}
+}
+
+
+## OLD AND DEPRECATED ##
+
+# Derelict Trade Hub 
 seeder_trade_hub_site = {
 	desc = "seeder_trade_hub_site_desc"
 	picture = GFX_evt_space_station
@@ -303,43 +384,6 @@ terrorist_base_site = {
 		difficulty = 4
 		icon = GFX_archaeology_runes_A6
 		event = plasoc.37
-	}
-
-	on_roll_failed = {
-		from = {
-			standard_archaeological_site_on_roll_failed = { RANDOM_EVENTS = all_random_events }
-		}
-	}
-}
-
-# TMA Path B: Subspace Match
-tma_path_b_site = {
-	desc = "tma_path_b_site_desc"
-	picture = GFX_evt_desert_arch
-	stages = 3
-	max_instances = 1
-	allow = {
-		is_ship_class = shipclass_science_ship
-		exists = leader
-	}
-	visible = {
-		default_site_visible_trigger = yes
-	}
-	
-	stage = {
-		difficulty = 4
-		icon = GFX_archaeology_runes_C1
-		event = maai.136
-	}
-	stage = {
-		difficulty = 5
-		icon = GFX_archaeology_runes_C2
-		event = maai.137
-	}
-	stage = {
-		difficulty = 6
-		icon = GFX_archaeology_runes_C3
-		event = maai.138
 	}
 
 	on_roll_failed = {
