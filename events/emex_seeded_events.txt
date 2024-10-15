@@ -160,7 +160,6 @@ country_event = {
 					has_planet_flag = emex_seeder_sp1_planet
 				}
 				set_planet_flag = emex_seeder_sp1_planet@root
-				save_global_event_target_as = emex_seeder_sp1_planet@root
 				enable_special_project = {
 					name = EMEX_SEEDED_PATH1
 					location = THIS
@@ -245,64 +244,67 @@ country_event = {
 ## Path 1 - World of Grey
 
 # Start SP Complete
-country_event = {
+ship_event = {
 	id = emex_origin2.100
 	title = "emex_origin2.100.name"
 	desc = "emex_origin2.100.desc"
 	picture = GFX_evt_gray_goo
-	location = event_target:emex_seeder_sp1_planet@root
+	location = fromfrom
 	
 	is_triggered_only = yes
 	
 	trigger = {
-		has_origin = origin_emex_seeded_evolution
+		owner = { has_origin = origin_emex_seeded_evolution }
 	}
 
 	immediate = {
-		# Use for localisation
-		event_target:emex_seeder_sp1_planet@root = {
-			save_event_target_as = emex_seeder_sp1_planet_eventname
+		fromfrom = {
+			save_event_target_as = emex_seeder_sp1_target
 		}
 	}
 
-	after = {
-		clear_global_event_target
-	}
+	# after = {
+	# 	clear_global_event_target = emex_seeder_sp1_planet_eventname
+	# }
 	
 	option = {
 		name = "emex_origin2.100.1"
-		add_resource = {
-			energy = -750
-		}
-		hidden_effect = {
-			set_country_flag = emex_seeder_sp1_pathA
-			country_event = {
-				id = emex_origin2.101
-				days = 90
-				random = 30
+		owner = {
+			add_resource = {
+				energy = -750
+			}
+			hidden_effect = {
+				set_country_flag = emex_seeder_sp1_pathA
+				country_event = {
+					id = emex_origin2.101
+					days = 90
+					random = 30
+				}
 			}
 		}
 	}
 	option = {
 		name = "emex_origin2.100.2"
 		allow = {
-			has_resource = { type = minerals amount >= 2000}
+			owner = { has_resource = { type = minerals amount >= 2000} }
 		}
-		add_resource = {
-			minerals = -2000
-		}
-		add_monthly_resource_mult = {
-			resource = unity
-			value = 3
-			min = 500
-			max = 10000
-		}
-		hidden_effect = {
-			set_country_flag = emex_seeder_sp1_pathB
-			country_event = {
-				id = emex_origin2.101
-				days = 60
-				random = 30
+		owner = {
+			add_resource = {
+				minerals = -2000
+			}
+			add_monthly_resource_mult = {
+				resource = unity
+				value = 3
+				min = 750
+				max = 10000
+			}
+			hidden_effect = {
+				set_country_flag = emex_seeder_sp1_pathB
+				country_event = {
+					id = emex_origin2.101
+					days = 60
+					random = 30
+				}
 			}
 		}
 	}
@@ -325,7 +327,7 @@ country_event = {
 		text = "emex_origin2.101.B.desc"
 	}
 	picture = GFX_evt_gray_gooed_planet
-	location = event_target:emex_seeder_sp1_planet@root
+	location = event_target:emex_seeder_sp1_target
 	
 	is_triggered_only = yes
 
@@ -334,16 +336,16 @@ country_event = {
 	}
 
 	immediate = {
-		event_target:emex_seeder_sp1_planet@root = {
+		event_target:emex_seeder_sp1_target = {
 			change_pc = pc_barren_cold
 			reroll_deposits = yes
-			add_deposit = d_alloys_2
 		}
 	}
 	
 	option = {
 		name = "emex_origin2.101.1"
-		event_target:emex_seeder_sp1_planet@root = {
+		event_target:emex_seeder_sp1_target = {
+			add_deposit = d_alloys_2
 			enable_special_project = {
 				name = EMEX_SEEDED_PATH1_part2
 				location = THIS
@@ -358,6 +360,7 @@ country_event = {
 	title = "emex_origin2.102.name"
 	desc = "emex_origin2.102.desc"
 	picture = GFX_evt_storm_formation
+	location = event_target:emex_seeder_sp1_target
 	
 	is_triggered_only = yes
 
@@ -409,6 +412,7 @@ country_event = {
 		text = "emex_origin2.103.B.desc"
 	}
 	picture = GFX_evt_derelict_interior
+	location = event_target:emex_seeder_sp1_target
 	
 	is_triggered_only = yes
 
@@ -450,7 +454,7 @@ country_event = {
 				progress = 0.4
 			}
 		}
-		event_target:emex_seeder_sp1_planet@root = {
+		event_target:emex_seeder_sp1_target = {
 			add_deposit = d_nanites_deposit_2
 		}
 

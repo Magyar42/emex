@@ -167,13 +167,12 @@ special_project = {
 	event_scope = ship_event
 
 	requirements = {
+		leader = scientist
 		shipclass_science_ship = 1
 	}
 	
 	on_success = {
-		owner = {
-			country_event = { id = emex_origin2.100 }
-		}
+		ship_event = { id = emex_origin2.100 }
 	}
 }
 
@@ -189,14 +188,13 @@ special_project = {
 	event_scope = ship_event
 
 	requirements = {
+		leader = scientist
 		shipclass_science_ship = 1
 		shipclass_constructor = 1
 	}
 	
 	on_success = {
-		owner = {
-			country_event = { id = emex_origin2.102 }
-		}
+		owner = { country_event = { id = emex_origin2.102 } }
 	}
 }
 
@@ -213,6 +211,7 @@ special_project = {
 	event_scope = ship_event
 
 	requirements = {
+		leader = scientist
 		shipclass_science_ship = 1
 	}
 	
@@ -236,6 +235,7 @@ special_project = {
 	event_scope = ship_event
 
 	requirements = {
+		leader = scientist
 		shipclass_science_ship = 1
 	}
 	
@@ -259,6 +259,7 @@ special_project = {
 	event_scope = ship_event
 
 	requirements = {
+		leader = scientist
 		shipclass_science_ship = 1
 	}
 	
@@ -282,6 +283,7 @@ special_project = {
 	event_scope = ship_event
 
 	requirements = {
+		leader = scientist
 		shipclass_science_ship = 1
 	}
 	
@@ -305,6 +307,7 @@ special_project = {
 	event_scope = ship_event
 
 	requirements = {
+		leader = scientist
 		shipclass_science_ship = 1
 	}
 	
