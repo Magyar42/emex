@@ -624,7 +624,7 @@ fleet_event = {
 				resource = minerals
 				value = 12
 				min = 3000
-				max = 7000
+				max = 5000
 			}
 			add_monthly_resource_mult = {
 				resource = society_research
