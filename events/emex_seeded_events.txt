@@ -544,7 +544,9 @@ fleet_event = {
 	option = {
 		name = emex_origin2.201.2 # Path B
 		small_artifact_reward = yes
-		add_stage_clues = -2
+		from = {
+			add_stage_clues = -2
+		}
 		owner = {
 			set_country_flag = emex_seeder_sp2_pathB
 		}
@@ -556,25 +558,25 @@ fleet_event = {
 	title = "emex_origin2.202.name"
 	desc = {
 		trigger = {
-			has_country_flag = emex_seeder_sp2_pathA
+			owner = { has_country_flag = emex_seeder_sp2_pathA }
 		}
 		text = "emex_origin2.202.A.desc"
 	}
 	desc = {
 		trigger = {
-			has_country_flag = emex_seeder_sp2_pathB
+			owner = { has_country_flag = emex_seeder_sp2_pathB }
 		}
 		text = "emex_origin2.202.B.desc"
 	}
 	picture = {
 		trigger = {
-			has_country_flag = emex_seeder_sp2_pathA
+			owner = { has_country_flag = emex_seeder_sp2_pathA }
 		}
 		picture = GFX_evt_cosmic_storms_calibration
 	}
 	picture = {
 		trigger = {
-			has_country_flag = emex_seeder_sp2_pathB
+			owner = { has_country_flag = emex_seeder_sp2_pathB }
 		}
 		picture = GFX_evt_sabotaged_ship
 	}
@@ -601,7 +603,7 @@ fleet_event = {
 		}
 		owner = {
 			add_resource = {
-				rare_crystals = 1000
+				rare_crystals = 2000
 			}
 		}
 		large_artifact_reward = yes
@@ -684,31 +686,33 @@ fleet_event = {
 		name = emex_origin2.204.1
 		small_artifact_reward = yes
 
-		event_target:emex_seeder_sp2_target = {
+		from.planet = {
 			add_deposit = d_physics_4
 			add_deposit = d_society_4
 			add_deposit = d_engineering_4
 		}
-
-		add_monthly_resource_mult = {
-			resource = unity
-			value = @tier4unityreward
-			min = @tier4unitymin
-			max = @tier4unitymax
+		
+		owner = {
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier4unityreward
+				min = @tier4unitymin
+				max = @tier4unitymax
+			}
+	
+			remove_country_flag = emex_seeded_ongoing_branch
+			set_country_flag = emex_seeded_chain2_done
+			add_event_chain_counter = {
+				event_chain = emex_seeded_annals
+				counter = emex_seeded_knowledge
+				amount = 1
+			}
+			# todo: reenable
+			# country_event = {
+			# 	id = emex_origin2.10 # Main Gatekeeper
+			# 	days = 1800
+			# 	random = 1800
+			# }
 		}
-
-		remove_country_flag = emex_seeded_ongoing_branch
-		set_country_flag = emex_seeded_chain2_done
-		add_event_chain_counter = {
-			event_chain = emex_seeded_annals
-			counter = emex_seeded_knowledge
-			amount = 1
-		}
-		# todo: reenable
-		# country_event = {
-		# 	id = emex_origin2.10 # Main Gatekeeper
-		# 	days = 1800
-		# 	random = 1800
-		# }
 	}
 }
