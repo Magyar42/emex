@@ -927,71 +927,73 @@ decision_emex_nanite_inundation = {
 	}
 }
 
-# # Rile Workers (AnTy 2)
-# decision_emex_rile_workers = {
-# 	owned_planets_only = yes
-# 	icon = decision_alien_propaganda
-# 	sound = event_administrative_work
 
-# 	enactment_time = 60
-# 	resources = {
-# 		category = decisions
-# 		cost = {
-# 			influence = 75
-# 		}
-# 	}
-	
-# 	potential = {
-# 		exists = owner
-# 		owner = {
-# 			has_valid_civic = civic_anarcho_tyranny_v2
-# 		}
-# 		NOT = {
-# 			has_modifier = emex_anarchic_tyranny
-# 		}
-# 	}
-	
-# 	allow = {
-# 	}
-	
-# 	effect = {
-# 		add_modifier = {
-# 			modifier = "emex_anarchic_tyranny"
-# 			multiplier = value:emex_anty2_worker_effect_mult
-# 		}
-# 	}
-	
-# 	ai_weight = {
-# 		weight = 0
-# 	}
-# }
+# TODO: add penalty of some kind for each planet that does NOT have the anarhic tyrnny modifier
+# Rile Workers (AnTy 2)
+decision_emex_rile_workers = {
+	owned_planets_only = yes
+	icon = decision_alien_propaganda
+	sound = event_administrative_work
 
-# # Un-Rile Workers (AnTy 2)
-# decision_emex_rile_workers_undo = {
-# 	owned_planets_only = yes
-# 	icon = decision_alien_propaganda
-# 	sound = event_administrative_work
+	enactment_time = 60
+	resources = {
+		category = decisions
+		cost = {
+			influence = 75
+		}
+	}
+	
+	potential = {
+		exists = owner
+		owner = {
+			has_valid_civic = civic_anarcho_tyranny_v2
+		}
+		NOT = {
+			has_modifier = emex_anarchic_tyranny
+		}
+	}
+	
+	allow = {
+	}
+	
+	effect = {
+		add_modifier = {
+			modifier = "emex_anarchic_tyranny"
+			multiplier = value:emex_anty2_worker_effect_mult
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+}
 
-# 	enactment_time = 120
-# 	resources = {
-# 		category = decisions
-# 	}
+# Un-Rile Workers (AnTy 2)
+decision_emex_rile_workers_undo = {
+	owned_planets_only = yes
+	icon = decision_alien_propaganda
+	sound = event_administrative_work
+
+	enactment_time = 120
+	resources = {
+		category = decisions
+	}
 	
-# 	potential = {
-# 		has_modifier = emex_anarchic_tyranny
-# 	}
+	potential = {
+		has_modifier = emex_anarchic_tyranny
+	}
 	
-# 	allow = {
-# 	}
+	allow = {
+	}
 	
-# 	effect = {	
-# 		remove_modifier = emex_anarchic_tyranny
-# 	}
+	effect = {	
+		remove_modifier = emex_anarchic_tyranny
+	}
 	
-# 	ai_weight = {
-# 		weight = 0
-# 	}
-# }
+	ai_weight = {
+		weight = 0
+	}
+}
 
 # Cliques of War - Encourage Feudalism
 decision_emex_cow_enable = {

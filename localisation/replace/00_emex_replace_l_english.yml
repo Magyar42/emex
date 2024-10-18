@@ -7,5 +7,5 @@
  civic_privatized_exploration_desc: "$emex_background_civic_tt$\n\nFor years, this civilization was told that the hyperdrive was almost finished. Patiently they waited, yet all the while, the subsidiary in charge of the project was quietly diverting the funds into their own, private accounts. When the fraud was finally revealed, the Corporation hastened to provide experimental, exploratory vessels."
  civic_shadow_council_desc: "Unbeknownst to its own citizens, this society is actually manipulated from behind the scenes by a secretive shadow council. Appearances must be kept, but the tyranny of the majority should also be guarded against. After all, what if the fools vote for the wrong candidate? $emex_synergy_2b_effects$"
  
- mod_leaders_unity_upkeep_mult: "Leader £energy£ Energy Credits Upkeep" # Overwritten as default text made it seem like it applied to all leaders, even if just applied to one leader
+ mod_leaders_unity_upkeep_mult: "Leader £unity£ Unity Upkeep" # Overwritten as default text made it seem like it applied to all leaders, even if just applied to one leader
  mod_planet_metallurgists_upkeep_mult: "Upkeep of £job_foundry£ Metallurgists" # Overwritten to add job icon
